@@ -1,0 +1,1880 @@
+# Voting Text
+defined_text = {
+	name = GetCurrentVotingText
+	
+	text = {
+		trigger = {
+			has_global_flag = un_council_vote_active
+		}
+		localization_key = string_un_current_vote_text
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_un_no_current_vote_text
+	}
+}
+
+# Vote Indicator Tooltips
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip1
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^0 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^0 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^0 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^0 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^0 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^0 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip2
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^1 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^1 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^1 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^1 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^1 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^1 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip3
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^2 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^2 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^2 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^2 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^2 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^2 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip4
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^3 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^3 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^3 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^3 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^3 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^3 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip5
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^4 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^4 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^4 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^4 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^4 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^4 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip6
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^5 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^5 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^5 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^5 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^5 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^5 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip7
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^6 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^6 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^6 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^6 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^6 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^6 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip8
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^7 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^7 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^7 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^7 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^7 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^7 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip9
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^8 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^8 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^8 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^8 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^8 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^8 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip10
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^9 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^9 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^9 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^9 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^9 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^9 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip11
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^10 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^10 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^10 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^10 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^10 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^10 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip12
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^11 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^11 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^11 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^11 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^11 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^11 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip13
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^12 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^12 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^12 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^12 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^12 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^12 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip14
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^13 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^13 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^13 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^13 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^13 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^13 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetCurrentVoteIndicatorTooltip15
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^14 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^14 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_yes
+			}
+		}
+		localization_key = string_current_vote_indicator_yes
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^14 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^14 }
+			var:selected_un_council_member = {
+				has_country_flag = un_council_vote_no
+			}
+		}
+		localization_key = string_current_vote_indicator_no
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^14 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^14 }
+		}
+		localization_key = string_current_vote_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+# Opinion Indicator Tooltip:
+defined_text = {
+	name = GetOpinionIndicatorTooltip1
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^0 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^0 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^0 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^0 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^0 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^0 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip2
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^1 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^1 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^1 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^1 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^1 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^1 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip3
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^2 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^2 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^2 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^2 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^2 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^2 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip4
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^3 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^3 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^3 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^3 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^3 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^3 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip5
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^4 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^4 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^4 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^4 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^4 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^4 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip6
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^5 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^5 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^5 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^5 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^5 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^5 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip7
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^6 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^6 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^6 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^6 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^6 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^6 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip8
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^7 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^7 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^7 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^7 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^7 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^7 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip9
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^8 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^8 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^8 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^8 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^8 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^8 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip10
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^9 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^9 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^9 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^9 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^9 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^9 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip11
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^10 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^10 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^10 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^10 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^10 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^10 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip12
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^11 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^11 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^11 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^11 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^11 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^11 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip13
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^12 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^12 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^12 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^12 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^12 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^12 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip14
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^13 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^13 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^13 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^13 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^13 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^13 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetOpinionIndicatorTooltip15
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^14 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^14 }
+			var:selected_un_council_member = {
+				tag = ROOT
+			}
+		}
+		localization_key = string_opinion_indicator_thats_us
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^14 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^14 }
+			var:selected_un_council_member = {
+				has_opinion = {
+					target = ROOT
+					value > 0
+				}
+			}
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_positive
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^14 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^14 }
+			var:selected_un_council_member = {
+				set_temp_variable = { selected_un_council_member_opinion = opinion@ROOT }
+			}
+		}
+		localization_key = string_opinion_indicator_negative
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+# Vote Indicator Tooltips
+defined_text = {
+	name = GetFactionIndicatorTooltip1
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^0 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^0 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^0 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^0 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^0 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^0 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip2
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^1 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^1 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^1 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^1 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^1 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^1 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip3
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^2 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^2 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^2 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^2 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^2 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^2 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip4
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^3 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^3 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^3 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^3 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^3 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^3 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip5
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^4 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^4 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^4 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^4 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^4 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^4 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip6
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^5 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^5 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^5 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^5 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^5 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^5 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip7
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^6 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^6 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^6 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^6 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^6 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^6 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip8
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^7 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^7 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^7 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^7 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^7 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^7 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip9
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^8 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^8 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^8 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^8 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^8 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^8 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip10
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^9 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^9 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^9 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^9 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^9 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^9 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip11
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^10 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^10 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^10 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^10 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^10 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^10 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip12
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^11 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^11 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^11 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^11 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^11 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^11 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip13
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^12 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^12 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^12 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^12 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^12 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^12 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip14
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^13 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^13 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^13 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^13 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^13 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^13 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}
+
+defined_text = {
+	name = GetFactionIndicatorTooltip15
+	
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^14 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^14 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+				is_in_faction_with = ROOT
+			}
+		}
+		localization_key = string_faction_indicator_same
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^14 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^14 }
+			var:selected_un_council_member = {
+				is_in_faction = yes
+			}
+		}
+		localization_key = string_faction_indicator_other
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { global.un_council_members^14 = 0 } }
+			set_temp_variable = { selected_un_council_member = global.un_council_members^14 }
+		}
+		localization_key = string_faction_indicator_none
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_indicator_invalid
+	}
+}

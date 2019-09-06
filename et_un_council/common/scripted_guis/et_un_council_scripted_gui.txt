@@ -1,0 +1,576 @@
+scripted_gui = {
+	et_un_council_window = {
+		context_type = player_context
+		
+		window_name = "et_un_council_window"
+		
+		visible = {
+			check_variable = { show_et_un_council_window > 0 }
+			if = {
+				limit = {
+					is_ai = no
+				}
+				set_color_indicators_for_un_council_members = yes
+			}
+		}
+		
+		triggers = {
+			num_of_yes_votes_bg_visible = {
+				has_global_flag = un_council_vote_active
+			}
+			num_of_yes_votes_visible = {
+				has_global_flag = un_council_vote_active
+			}
+			num_of_no_votes_bg_visible = {
+				has_global_flag = un_council_vote_active
+			}
+			num_of_no_votes_visible = {
+				has_global_flag = un_council_vote_active
+			}
+			vote_yes_button_visible = {
+				is_in_array = { global.un_council_members = THIS.id }
+				has_global_flag = un_council_vote_active
+				NOT = { has_country_flag = un_council_vote_yes }
+				NOT = { has_country_flag = un_council_vote_no }
+			}
+			vote_yes_button_checkmark_visible = {
+				is_in_array = { global.un_council_members = THIS.id }
+				has_global_flag = un_council_vote_active
+				NOT = { has_country_flag = un_council_vote_yes }
+				NOT = { has_country_flag = un_council_vote_no }
+			}
+			vote_no_button_visible = {
+				is_in_array = { global.un_council_members = THIS.id }
+				has_global_flag = un_council_vote_active
+				NOT = { has_country_flag = un_council_vote_yes }
+				NOT = { has_country_flag = un_council_vote_no }
+			}
+			vote_no_button_cross_visible = {
+				is_in_array = { global.un_council_members = THIS.id }
+				has_global_flag = un_council_vote_active
+				NOT = { has_country_flag = un_council_vote_yes }
+				NOT = { has_country_flag = un_council_vote_no }
+			}
+			
+			flag_button_1_visible = {
+				NOT = { check_variable = { global.un_council_members^0 = 0 } }
+			}
+			flag_button_2_visible = {
+				NOT = { check_variable = { global.un_council_members^1 = 0 } }
+			}
+			flag_button_3_visible = {
+				NOT = { check_variable = { global.un_council_members^2 = 0 } }
+			}
+			flag_button_4_visible = {
+				NOT = { check_variable = { global.un_council_members^3 = 0 } }
+			}
+			flag_button_5_visible = {
+				NOT = { check_variable = { global.un_council_members^4 = 0 } }
+			}
+			flag_button_6_visible = {
+				NOT = { check_variable = { global.un_council_members^5 = 0 } }
+			}
+			flag_button_7_visible = {
+				NOT = { check_variable = { global.un_council_members^6 = 0 } }
+			}
+			flag_button_8_visible = {
+				NOT = { check_variable = { global.un_council_members^7 = 0 } }
+			}
+			flag_button_9_visible = {
+				NOT = { check_variable = { global.un_council_members^8 = 0 } }
+			}
+			flag_button_10_visible = {
+				NOT = { check_variable = { global.un_council_members^9 = 0 } }
+			}
+			flag_button_11_visible = {
+				NOT = { check_variable = { global.un_council_members^10 = 0 } }
+			}
+			flag_button_12_visible = {
+				NOT = { check_variable = { global.un_council_members^11 = 0 } }
+			}
+			flag_button_13_visible = {
+				NOT = { check_variable = { global.un_council_members^12 = 0 } }
+			}
+			flag_button_14_visible = {
+				NOT = { check_variable = { global.un_council_members^13 = 0 } }
+			}
+			flag_button_15_visible = {
+				NOT = { check_variable = { global.un_council_members^14 = 0 } }
+			}
+			
+			current_vote_indicator_1_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_2_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_3_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_4_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_5_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_6_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_7_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_8_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_9_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_10_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_11_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_12_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_13_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_14_visible = {
+				is_ai = no
+			}
+			current_vote_indicator_15_visible = {
+				is_ai = no
+			}
+			
+			opinion_indicator_1_visible = {
+				is_ai = no
+			}
+			opinion_indicator_2_visible = {
+				is_ai = no
+			}
+			opinion_indicator_3_visible = {
+				is_ai = no
+			}
+			opinion_indicator_4_visible = {
+				is_ai = no
+			}
+			opinion_indicator_5_visible = {
+				is_ai = no
+			}
+			opinion_indicator_6_visible = {
+				is_ai = no
+			}
+			opinion_indicator_7_visible = {
+				is_ai = no
+			}
+			opinion_indicator_8_visible = {
+				is_ai = no
+			}
+			opinion_indicator_9_visible = {
+				is_ai = no
+			}
+			opinion_indicator_10_visible = {
+				is_ai = no
+			}
+			opinion_indicator_11_visible = {
+				is_ai = no
+			}
+			opinion_indicator_12_visible = {
+				is_ai = no
+			}
+			opinion_indicator_13_visible = {
+				is_ai = no
+			}
+			opinion_indicator_14_visible = {
+				is_ai = no
+			}
+			opinion_indicator_15_visible = {
+				is_ai = no
+			}
+			
+			faction_indicator_1_visible = {
+				is_ai = no
+			}
+			faction_indicator_2_visible = {
+				is_ai = no
+			}
+			faction_indicator_3_visible = {
+				is_ai = no
+			}
+			faction_indicator_4_visible = {
+				is_ai = no
+			}
+			faction_indicator_5_visible = {
+				is_ai = no
+			}
+			faction_indicator_6_visible = {
+				is_ai = no
+			}
+			faction_indicator_7_visible = {
+				is_ai = no
+			}
+			faction_indicator_8_visible = {
+				is_ai = no
+			}
+			faction_indicator_9_visible = {
+				is_ai = no
+			}
+			faction_indicator_10_visible = {
+				is_ai = no
+			}
+			faction_indicator_11_visible = {
+				is_ai = no
+			}
+			faction_indicator_12_visible = {
+				is_ai = no
+			}
+			faction_indicator_13_visible = {
+				is_ai = no
+			}
+			faction_indicator_14_visible = {
+				is_ai = no
+			}
+			faction_indicator_15_visible = {
+				is_ai = no
+			}
+		}
+		
+		effects = {
+			close_button_click = {
+				clear_variable = show_et_un_council_window
+			}
+			vote_yes_button_click = {
+				set_country_flag = un_council_vote_yes
+				add_to_variable = { global.un_council_yes_votes = 1 }
+			}
+			vote_no_button_click = {
+				set_country_flag = un_council_vote_no
+				add_to_variable = { global.un_council_no_votes = 1 }
+			}
+			
+			flag_button_1_click = {
+				var:global.un_council_members^0 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_2_click = {
+				var:global.un_council_members^1 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_3_click = {
+				var:global.un_council_members^2 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_4_click = {
+				var:global.un_council_members^3 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_5_click = {
+				var:global.un_council_members^4 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_6_click = {
+				var:global.un_council_members^5 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_7_click = {
+				var:global.un_council_members^6 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_8_click = {
+				var:global.un_council_members^7 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_9_click = {
+				var:global.un_council_members^8 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_10_click = {
+				var:global.un_council_members^9 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_11_click = {
+				var:global.un_council_members^10 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_12_click = {
+				var:global.un_council_members^11 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_13_click = {
+				var:global.un_council_members^12 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_14_click = {
+				var:global.un_council_members^13 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			flag_button_15_click = {
+				var:global.un_council_members^14 = {
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+		}
+		
+		properties = {
+			flag_button_1 = {
+				image = "[?global.un_council_members^0.GetFlag]"
+			}
+			flag_button_2 = {
+				image = "[?global.un_council_members^1.GetFlag]"
+			}
+			flag_button_3 = {
+				image = "[?global.un_council_members^2.GetFlag]"
+			}
+			flag_button_4 = {
+				image = "[?global.un_council_members^3.GetFlag]"
+			}
+			flag_button_5 = {
+				image = "[?global.un_council_members^4.GetFlag]"
+			}
+			flag_button_6 = {
+				image = "[?global.un_council_members^5.GetFlag]"
+			}
+			flag_button_7 = {
+				image = "[?global.un_council_members^6.GetFlag]"
+			}
+			flag_button_8 = {
+				image = "[?global.un_council_members^7.GetFlag]"
+			}
+			flag_button_9 = {
+				image = "[?global.un_council_members^8.GetFlag]"
+			}
+			flag_button_10 = {
+				image = "[?global.un_council_members^9.GetFlag]"
+			}
+			flag_button_11 = {
+				image = "[?global.un_council_members^10.GetFlag]"
+			}
+			flag_button_12 = {
+				image = "[?global.un_council_members^11.GetFlag]"
+			}
+			flag_button_13 = {
+				image = "[?global.un_council_members^12.GetFlag]"
+			}
+			flag_button_14 = {
+				image = "[?global.un_council_members^13.GetFlag]"
+			}
+			flag_button_15 = {
+				image = "[?global.un_council_members^14.GetFlag]"
+			}
+			
+			current_vote_indicator_1 = {
+				frame = current_vote_indicator_1_frame
+			}
+			current_vote_indicator_2 = {
+				frame = current_vote_indicator_2_frame
+			}
+			current_vote_indicator_3 = {
+				frame = current_vote_indicator_3_frame
+			}
+			current_vote_indicator_4 = {
+				frame = current_vote_indicator_4_frame
+			}
+			current_vote_indicator_5 = {
+				frame = current_vote_indicator_5_frame
+			}
+			current_vote_indicator_6 = {
+				frame = current_vote_indicator_6_frame
+			}
+			current_vote_indicator_7 = {
+				frame = current_vote_indicator_7_frame
+			}
+			current_vote_indicator_8 = {
+				frame = current_vote_indicator_8_frame
+			}
+			current_vote_indicator_9 = {
+				frame = current_vote_indicator_9_frame
+			}
+			current_vote_indicator_10 = {
+				frame = current_vote_indicator_10_frame
+			}
+			current_vote_indicator_11 = {
+				frame = current_vote_indicator_11_frame
+			}
+			current_vote_indicator_12 = {
+				frame = current_vote_indicator_12_frame
+			}
+			current_vote_indicator_13 = {
+				frame = current_vote_indicator_13_frame
+			}
+			current_vote_indicator_14 = {
+				frame = current_vote_indicator_14_frame
+			}
+			current_vote_indicator_15 = {
+				frame = current_vote_indicator_15_frame
+			}
+			
+			opinion_indicator_1 = {
+				frame = opinion_indicator_1_frame
+			}
+			opinion_indicator_2 = {
+				frame = opinion_indicator_2_frame
+			}
+			opinion_indicator_3 = {
+				frame = opinion_indicator_3_frame
+			}
+			opinion_indicator_4 = {
+				frame = opinion_indicator_4_frame
+			}
+			opinion_indicator_5 = {
+				frame = opinion_indicator_5_frame
+			}
+			opinion_indicator_6 = {
+				frame = opinion_indicator_6_frame
+			}
+			opinion_indicator_7 = {
+				frame = opinion_indicator_7_frame
+			}
+			opinion_indicator_8 = {
+				frame = opinion_indicator_8_frame
+			}
+			opinion_indicator_9 = {
+				frame = opinion_indicator_9_frame
+			}
+			opinion_indicator_10 = {
+				frame = opinion_indicator_10_frame
+			}
+			opinion_indicator_11 = {
+				frame = opinion_indicator_11_frame
+			}
+			opinion_indicator_12 = {
+				frame = opinion_indicator_12_frame
+			}
+			opinion_indicator_13 = {
+				frame = opinion_indicator_13_frame
+			}
+			opinion_indicator_14 = {
+				frame = opinion_indicator_14_frame
+			}
+			opinion_indicator_15 = {
+				frame = opinion_indicator_15_frame
+			}
+			
+			faction_indicator_1 = {
+				frame = faction_indicator_1_frame
+			}
+			faction_indicator_2 = {
+				frame = faction_indicator_2_frame
+			}
+			faction_indicator_3 = {
+				frame = faction_indicator_3_frame
+			}
+			faction_indicator_4 = {
+				frame = faction_indicator_4_frame
+			}
+			faction_indicator_5 = {
+				frame = faction_indicator_5_frame
+			}
+			faction_indicator_6 = {
+				frame = faction_indicator_6_frame
+			}
+			faction_indicator_7 = {
+				frame = faction_indicator_7_frame
+			}
+			faction_indicator_8 = {
+				frame = faction_indicator_8_frame
+			}
+			faction_indicator_9 = {
+				frame = faction_indicator_9_frame
+			}
+			faction_indicator_10 = {
+				frame = faction_indicator_10_frame
+			}
+			faction_indicator_11 = {
+				frame = faction_indicator_11_frame
+			}
+			faction_indicator_12 = {
+				frame = faction_indicator_12_frame
+			}
+			faction_indicator_13 = {
+				frame = faction_indicator_13_frame
+			}
+			faction_indicator_14 = {
+				frame = faction_indicator_14_frame
+			}
+			faction_indicator_15 = {
+				frame = faction_indicator_15_frame
+			}
+		}
+	}
+}

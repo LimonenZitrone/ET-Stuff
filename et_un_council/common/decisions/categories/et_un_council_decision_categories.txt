@@ -1,0 +1,7 @@
+et_un_council_category = {
+	icon = generic_formable_nations
+	
+	visible = {
+		is_ai = no
+	}
+}

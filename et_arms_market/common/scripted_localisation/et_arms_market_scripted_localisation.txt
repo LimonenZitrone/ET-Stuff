@@ -1,0 +1,540 @@
+# Equipment Names
+defined_text = {
+	name = GetArmsMarketEquipmentName
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { et_arms_market_equipment_id = v }
+		}
+		localization_key = "[This.GetArmsMarketEquipmentNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketEquipmentListName
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { et_arms_market_equipment_id = i }
+			add_to_temp_variable = { et_arms_market_equipment_id = 1 }
+		}
+		localization_key = "[This.GetArmsMarketEquipmentNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketCreateOfferSelectedEquipmentName
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+		}
+		localization_key = "[This.GetArmsMarketEquipmentNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketTakeOfferSelectedEquipmentName
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_buy }
+		}
+		localization_key = "[This.GetArmsMarketEquipmentNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketCreateRequestSelectedEquipmentName
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_buy }
+		}
+		localization_key = "[This.GetArmsMarketEquipmentNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketTakeRequestSelectedEquipmentName
+	
+	text = {
+		trigger = {
+			always = yes
+			set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+		}
+		localization_key = "[This.GetArmsMarketEquipmentNameOtherContext]"
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketEquipmentNameOtherContext
+	
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 1 }
+		}
+		localization_key = infantry_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 2 }
+		}
+		localization_key = motorized_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 3 }
+		}
+		localization_key = mechanized_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 4 }
+		}
+		localization_key = anti_air_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 5 }
+		}
+		localization_key = anti_tank_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 6 }
+		}
+		localization_key = artillery_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 7 }
+		}
+		localization_key = rocket_artillery_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 8 }
+		}
+		localization_key = motorized_rocket_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 9 }
+		}
+		localization_key = light_tank_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 10 }
+		}
+		localization_key = medium_tank_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 11 }
+		}
+		localization_key = heavy_tank_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 12 }
+		}
+		localization_key = super_heavy_tank_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 13 }
+		}
+		localization_key = modern_tank_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 14 }
+		}
+		localization_key = amphibious_mechanized_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 15 }
+		}
+		localization_key = amphibious_tank_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 16 }
+		}
+		localization_key = fighter_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 17 }
+		}
+		localization_key = cv_fighter_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 18 }
+		}
+		localization_key = CAS_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 19 }
+		}
+		localization_key = cv_CAS_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 20 }
+		}
+		localization_key = nav_bomber_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 21 }
+		}
+		localization_key = cv_nav_bomber_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 22 }
+		}
+		localization_key = jet_fighter_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 23 }
+		}
+		localization_key = tac_bomber_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 24 }
+		}
+		localization_key = jet_tac_bomber_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 25 }
+		}
+		localization_key = heavy_fighter_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 26 }
+		}
+		localization_key = strat_bomber_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 27 }
+		}
+		localization_key = jet_strat_bomber_equipment
+	}
+	text = {
+		trigger = {
+			check_variable = { et_arms_market_equipment_id = 28 }
+		}
+		localization_key = transport_plane_equipment
+	}
+	
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = "---"
+	}
+}
+
+# Button Tooltips
+defined_text = {
+	name = GetArmsMarketCreateOfferButtonTooltip
+	
+	text = {
+		trigger = {
+			OR = {
+				check_variable = { show_et_arms_market_create_offer_window > 0 }
+				check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 }
+				check_variable = { show_et_arms_market_take_offer_window > 0 }
+				check_variable = { show_et_arms_market_create_request_window > 0 }
+				check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 }
+				check_variable = { show_et_arms_market_take_request_window > 0 }
+			}
+		}
+		localization_key = string_et_arms_market_take_remove_offer_button_tt_invalid_we_already_interact_with_arms_market
+	}
+	text = {
+		trigger = {
+			is_major = no
+		}
+		localization_key = string_et_arms_market_create_offer_button_tt_invalid_no_major
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_et_arms_market_create_offer_button_tt
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketCreateRequestButtonTooltip
+	
+	text = {
+		trigger = {
+			OR = {
+				check_variable = { show_et_arms_market_create_offer_window > 0 }
+				check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 }
+				check_variable = { show_et_arms_market_take_offer_window > 0 }
+				check_variable = { show_et_arms_market_create_request_window > 0 }
+				check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 }
+				check_variable = { show_et_arms_market_take_request_window > 0 }
+			}
+		}
+		localization_key = string_et_arms_market_take_remove_offer_button_tt_invalid_we_already_interact_with_arms_market
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_et_arms_market_create_request_button_tt
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketTakeOfferButtonTooltip
+	
+	text = {
+		trigger = {
+			ROOT = {
+				OR = {
+					check_variable = { show_et_arms_market_create_offer_window > 0 }
+					check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 }
+					check_variable = { show_et_arms_market_take_offer_window > 0 }
+					check_variable = { show_et_arms_market_create_request_window > 0 }
+					check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 }
+					check_variable = { show_et_arms_market_take_request_window > 0 }
+				}
+			}
+		}
+		localization_key = string_et_arms_market_take_remove_offer_button_tt_invalid_we_already_interact_with_arms_market
+	}
+	text = {
+		trigger = {
+			set_temp_variable = { current_equipment = i }
+			add_to_temp_variable = { current_equipment = 1 }
+			any_country = {
+				check_variable = { et_arms_market_seller = PREV.id }
+				check_variable = { et_arms_market_equipment_to_buy = current_equipment }
+			}
+		}
+		localization_key = string_et_arms_market_take_remove_offer_button_tt_invalid_someone_buys
+	}
+	text = {
+		trigger = {
+			check_variable = { v > 0 }
+		}
+		localization_key = string_et_arms_market_take_offer_button_tt_valid
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_et_arms_market_take_remove_offer_button_tt_invalid
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketRemoveOfferButtonTooltip
+	
+	text = {
+		trigger = {
+			ROOT = {
+				OR = {
+					check_variable = { show_et_arms_market_create_offer_window > 0 }
+					check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 }
+					check_variable = { show_et_arms_market_take_offer_window > 0 }
+					check_variable = { show_et_arms_market_create_request_window > 0 }
+					check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 }
+					check_variable = { show_et_arms_market_take_request_window > 0 }
+				}
+			}
+		}
+		localization_key = string_et_arms_market_take_remove_offer_button_tt_invalid_we_already_interact_with_arms_market
+	}
+	text = {
+		trigger = {
+			set_temp_variable = { current_equipment = i }
+			add_to_temp_variable = { current_equipment = 1 }
+			any_country = {
+				check_variable = { et_arms_market_seller = PREV.id }
+				check_variable = { et_arms_market_equipment_to_buy = current_equipment }
+			}
+		}
+		localization_key = string_et_arms_market_take_remove_offer_button_tt_invalid_someone_buys
+	}
+	text = {
+		trigger = {
+			check_variable = { v > 0 }
+		}
+		localization_key = string_et_arms_market_remove_offer_button_tt_valid
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_et_arms_market_take_remove_offer_button_tt_invalid
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketTakeRequestButtonTooltip
+	
+	text = {
+		trigger = {
+			ROOT = {
+				OR = {
+					check_variable = { show_et_arms_market_create_offer_window > 0 }
+					check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 }
+					check_variable = { show_et_arms_market_take_offer_window > 0 }
+					check_variable = { show_et_arms_market_create_request_window > 0 }
+					check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 }
+					check_variable = { show_et_arms_market_take_request_window > 0 }
+				}
+			}
+		}
+		localization_key = string_et_arms_market_take_remove_offer_button_tt_invalid_we_already_interact_with_arms_market
+	}
+	text = {
+		trigger = {
+			set_temp_variable = { current_equipment = i }
+			add_to_temp_variable = { current_equipment = 1 }
+			any_country = {
+				check_variable = { et_arms_market_seller = PREV.id }
+				check_variable = { et_arms_market_equipment_to_buy = current_equipment }
+			}
+		}
+		localization_key = string_et_arms_market_take_remove_request_button_tt_invalid_someone_buys
+	}
+	text = {
+		trigger = {
+			NOT = { check_variable = { v > 0 } }
+		}
+		localization_key = string_et_arms_market_take_remove_request_button_tt_invalid
+	}
+	text = {
+		trigger = {
+			ROOT = {
+				is_major = no
+			}
+		}
+		localization_key = string_et_arms_market_create_offer_button_tt_invalid_no_major
+	}
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					ROOT = {
+						NOT = {
+							has_equipment = {
+								[EQUIPMENT] > 0
+							}
+						}
+					}
+				}
+				EQUIPMENT = "[This.GetArmsMarketEquipmentListName]"
+			}
+		}
+		localization_key = string_et_arms_market_take_request_button_tt_invalid_not_enough_equipment
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_et_arms_market_take_request_button_tt_valid
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketRemoveRequestButtonTooltip
+	
+	text = {
+		trigger = {
+			ROOT = {
+				OR = {
+					check_variable = { show_et_arms_market_create_offer_window > 0 }
+					check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 }
+					check_variable = { show_et_arms_market_take_offer_window > 0 }
+					check_variable = { show_et_arms_market_create_request_window > 0 }
+					check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 }
+					check_variable = { show_et_arms_market_take_request_window > 0 }
+				}
+			}
+		}
+		localization_key = string_et_arms_market_take_remove_offer_button_tt_invalid_we_already_interact_with_arms_market
+	}
+	text = {
+		trigger = {
+			set_temp_variable = { current_equipment = i }
+			add_to_temp_variable = { current_equipment = 1 }
+			any_country = {
+				check_variable = { et_arms_market_seller = PREV.id }
+				check_variable = { et_arms_market_equipment_to_buy = current_equipment }
+			}
+		}
+		localization_key = string_et_arms_market_take_remove_request_button_tt_invalid_someone_buys
+	}
+	text = {
+		trigger = {
+			check_variable = { v > 0 }
+		}
+		localization_key = string_et_arms_market_remove_request_button_tt_valid
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_et_arms_market_take_remove_request_button_tt_invalid
+	}
+}
+
+# Other GUI Tooltips:
+defined_text = {
+	name = GetArmsMarketOfferEquipmentEntryTooltip
+	
+	text = {
+		trigger = {
+			check_variable = { v > 0 }
+		}
+		localization_key = string_et_arms_market_offer_equipment_entry_tt
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_et_arms_market_offer_equipment_entry_tt_invalid
+	}
+}
+
+defined_text = {
+	name = GetArmsMarketRequestEquipmentEntryTooltip
+	
+	text = {
+		trigger = {
+			check_variable = { v > 0 }
+		}
+		localization_key = string_et_arms_market_request_equipment_entry_tt
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_et_arms_market_request_equipment_entry_tt_invalid
+	}
+}

@@ -1,0 +1,14 @@
+et_un_council_category = {
+	open_un_council_gui = {
+		icon = generic_form_nation
+		
+		visible = {
+			check_variable = { show_et_un_council_window < 1 }
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = OPEN_ET_UN_COUNCIL_GUI_TT
+			set_variable = { show_et_un_council_window = 1 }
+		}
+	}
+}

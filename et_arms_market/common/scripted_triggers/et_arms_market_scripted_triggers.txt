@@ -1,0 +1,194 @@
+has_researched_equipment_to_request_on_et_arms_market = {
+	if = {
+		limit = {
+			check_variable = { equipment_to_request = 1 }
+		}
+		has_tech = infantry_weapons
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 2 }
+		}
+		has_tech = motorised_infantry
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 3 }
+		}
+		has_tech = mechanised_infantry
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 4 }
+		}
+		has_tech = interwar_antiair
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 5 }
+		}
+		has_tech = interwar_antitank
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 6 }
+		}
+		has_tech = gw_artillery
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 7 }
+		}
+		has_tech = rocket_artillery
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 8 }
+		}
+		has_tech = motorized_rocket_unit
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 9 }
+		}
+		has_tech = gwtank
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 10 }
+		}
+		OR = {
+			has_tech = basic_medium_tank
+			has_tech = improved_medium_tank
+			has_tech = advanced_medium_tank
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 11 }
+		}
+		OR = {
+			has_tech = basic_heavy_tank
+			has_tech = improved_heavy_tank
+			has_tech = advanced_heavy_tank
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 12 }
+		}
+		has_tech = super_heavy_tank
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 13 }
+		}
+		has_tech = main_battle_tank
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 14 }
+		}
+		has_tech = amphibious_mechanized_infantry
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 15 }
+		}
+		has_tech = amphibious_tank
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 16 }
+		}
+		has_tech = early_fighter
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 17 }
+		}
+		OR = {
+			has_tech = cv_early_fighter
+			has_tech = cv_fighter1
+			has_tech = cv_fighter2
+			has_tech = cv_fighter3
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 18 }
+		}
+		has_tech = CAS1
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 19 }
+		}
+		OR = {
+			has_tech = cv_CAS1
+			has_tech = cv_CAS2
+			has_tech = cv_CAS3
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 20 }
+		}
+		has_tech = naval_bomber1
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 21 }
+		}
+		OR = {
+			has_tech = cv_naval_bomber1
+			has_tech = cv_naval_bomber2
+			has_tech = cv_naval_bomber3
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 22 }
+		}
+		has_tech = jet_fighter1
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 23 }
+		}
+		has_tech = early_bomber
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 24 }
+		}
+		has_tech = jet_tactical_bomber1
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 25 }
+		}
+		has_tech = heavy_fighter1
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 26 }
+		}
+		has_tech = strategic_bomber1
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 27 }
+		}
+		has_tech = jet_strategic_bomber1
+	}
+	else_if = {
+		limit = {
+			check_variable = { equipment_to_request = 28 }
+		}
+		hidden_trigger = {
+			always = yes
+		}
+	}
+	
+}

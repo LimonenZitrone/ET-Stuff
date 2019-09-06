@@ -1,0 +1,1691 @@
+@TOTAL_NUM_OF_EQUIPMENTS = 28 # the last ID defined in the "GetArmsMarketEquipmentNameOtherContext" scripted localisation
+
+scripted_gui = {
+	open_et_arms_market_window = {
+		context_type = player_context
+		
+		window_name = "open_et_arms_market_window"
+		parent_window_token = trade_tab
+		
+		visible = {
+			is_ai = no
+		}
+		
+		effects = {
+			open_button_click = {
+				if = {
+					limit = {
+						has_variable = show_et_arms_market_window
+					}
+					clear_variable = show_et_arms_market_window
+				}
+				else = {
+					set_variable = { show_et_arms_market_window = 1 }
+				}
+			}
+		}
+	}
+	
+	et_arms_market_window = {
+		context_type = player_context
+		
+		window_name = "et_arms_market_window"
+		
+		visible = {
+			check_variable = { show_et_arms_market_window > 0 }
+		}
+		
+		effects = {
+			close_button_click = {
+				clear_variable = show_et_arms_market_window
+			}
+			
+			entry_flag_click = {
+				if = {
+					limit = {
+						ROOT = {
+							is_ai = no
+						}
+					}
+					capital_scope = {
+						ROOT = {
+							goto_state = PREV
+						}
+					}
+				}
+			}
+			
+			# Offers
+			create_offer_button_click = {
+				set_variable = { show_et_arms_market_create_offer_window = 1 }
+				clear_variable = et_arms_market_amount_to_sell
+				clear_variable = et_arms_market_equipment_to_sell
+			}
+			take_offer_button_click = {
+				ROOT = {
+					set_variable = { show_et_arms_market_take_offer_window = 1 }
+					set_variable = { et_arms_market_amount_to_buy = v }
+					set_variable = { et_arms_market_amount_to_buy_max = v }
+					set_variable = { et_arms_market_equipment_to_buy = i }
+					add_to_variable = { et_arms_market_equipment_to_buy = 1 }
+				}
+				FROM = {
+					set_variable = { ROOT.et_arms_market_seller = THIS.id }
+				}
+			}
+			remove_offer_button_click = {
+				### start add equipment
+				meta_effect = {
+					text = {
+						add_equipment_to_stockpile = {
+							type = [EQUIPMENT]
+							amount = [AMOUNT]
+						}
+					}
+					EQUIPMENT = "[This.GetArmsMarketEquipmentListName]"
+					AMOUNT = "[?v]"
+				}
+				### end add equipment
+				set_variable = { our_et_arms_market_offers^i = 0 }
+				if = {
+					limit = {
+						all_of = {
+							array = our_et_arms_market_offers
+							value = v
+							check_variable = { v = 0 }
+						}
+					}
+					clear_array = our_et_arms_market_offers
+					remove_from_array = { global.et_arms_market_offers_array = THIS.id }
+				}
+			}
+			ai_select_offer_entry_button_click = {
+				# effects for AI taking an offer of the target
+			}
+			
+			# Requests
+			create_request_button_click = {
+				set_variable = { show_et_arms_market_create_request_window = 1 }
+				clear_variable = et_arms_market_amount_to_buy
+				clear_variable = et_arms_market_equipment_to_buy
+			}
+			take_request_button_click = {
+				ROOT = {
+					set_variable = { show_et_arms_market_take_request_window = 1 }
+					set_variable = { et_arms_market_amount_to_sell = v }
+					set_variable = { et_arms_market_amount_to_sell_max = v }
+					set_variable = { et_arms_market_equipment_to_sell = i }
+					add_to_variable = { et_arms_market_equipment_to_sell = 1 }
+					if = {
+						limit = {
+							check_variable = { et_arms_market_equipment_to_sell > 0 }
+							set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+							set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+							meta_trigger = {
+								text = {
+									has_equipment = {
+										[EQUIPMENT] < [AMOUNT]
+									}
+								}
+								EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+								AMOUNT = "[?amount_to_check_for]"
+							}
+						}
+						meta_effect = {
+							text = {
+								set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+						}
+					}
+				}
+				FROM = {
+					set_variable = { ROOT.et_arms_market_buyer = THIS.id }
+				}
+			}
+			remove_request_button_click = {
+				set_variable = { our_et_arms_market_requests^i = 0 }
+				if = {
+					limit = {
+						all_of = {
+							array = our_et_arms_market_requests
+							value = v
+							check_variable = { v = 0 }
+						}
+					}
+					clear_array = our_et_arms_market_requests
+					remove_from_array = { global.et_arms_market_requests_array = THIS.id }
+				}
+			}
+			ai_select_request_entry_button_click = {
+				# effects for AI taking a request of the target
+			}
+		}
+		
+		triggers = {
+			# Offers
+			create_offer_button_click_enabled = {
+				is_major = yes
+				NOT = { check_variable = { show_et_arms_market_create_offer_window > 0 } }
+				NOT = { check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 } }
+				NOT = { check_variable = { show_et_arms_market_take_offer_window > 0 } }
+				NOT = { check_variable = { show_et_arms_market_create_request_window > 0 } }
+				NOT = { check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 } }
+				NOT = { check_variable = { show_et_arms_market_take_request_window > 0 } }
+			}
+			take_offer_button_visible = {
+				ROOT = { is_ai = no }
+				NOT = { tag = ROOT }
+			}
+			take_offer_button_click_enabled = {
+				check_variable = { v > 0 }
+				ROOT = {
+					NOT = { check_variable = { show_et_arms_market_create_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_request_window > 0 } }
+				}
+				set_temp_variable = { current_equipment = i }
+				add_to_temp_variable = { current_equipment = 1 }
+				NOT = {
+					any_country = {
+						check_variable = { et_arms_market_seller = PREV.id }
+						check_variable = { et_arms_market_equipment_to_buy = current_equipment }
+					}
+				}
+			}
+			remove_offer_button_visible = {
+				ROOT = { is_ai = no }
+				tag = ROOT
+			}
+			remove_offer_button_click_enabled = {
+				check_variable = { v > 0 }
+				ROOT = {
+					NOT = { check_variable = { show_et_arms_market_create_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_request_window > 0 } }
+				}
+				set_temp_variable = { current_equipment = i }
+				add_to_temp_variable = { current_equipment = 1 }
+				NOT = {
+					any_country = {
+						check_variable = { et_arms_market_seller = PREV.id }
+						check_variable = { et_arms_market_equipment_to_buy = current_equipment }
+					}
+				}
+			}
+			no_offers_info_visible = {
+				check_variable = { global.et_arms_market_offers_array^num < 1 }
+			}
+			ai_select_offer_entry_button_visible = {
+				ROOT = {
+					is_ai = yes
+					NOT = { check_variable = { show_et_arms_market_create_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_request_window > 0 } }
+				}
+				any_of = {
+					array = our_et_arms_market_offers
+					value = v
+					index = i
+					check_variable = { v > 0 }
+					set_temp_variable = { current_equipment = i }
+					add_to_temp_variable = { current_equipment = 1 }
+					NOT = {
+						any_country = {
+							check_variable = { et_arms_market_seller = PREV.id }
+							check_variable = { et_arms_market_equipment_to_buy = current_equipment }
+						}
+					}
+				}
+			}
+			
+			# Requests
+			create_request_button_click_enabled = {
+				NOT = { check_variable = { show_et_arms_market_create_offer_window > 0 } }
+				NOT = { check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 } }
+				NOT = { check_variable = { show_et_arms_market_take_offer_window > 0 } }
+				NOT = { check_variable = { show_et_arms_market_create_request_window > 0 } }
+				NOT = { check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 } }
+				NOT = { check_variable = { show_et_arms_market_take_request_window > 0 } }
+			}
+			take_request_button_visible = {
+				ROOT = { is_ai = no }
+				NOT = { tag = ROOT }
+			}
+			take_request_button_click_enabled = {
+				check_variable = { v > 0 }
+				ROOT = {
+					is_major = yes
+					NOT = { check_variable = { show_et_arms_market_create_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_request_window > 0 } }
+					meta_trigger = {
+						text = {
+							has_equipment = {
+								[EQUIPMENT] > 0
+							}
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentListName]"
+					}
+				}
+				set_temp_variable = { current_equipment = i }
+				add_to_temp_variable = { current_equipment = 1 }
+				NOT = {
+					any_country = {
+						check_variable = { et_arms_market_buyer = PREV.id }
+						check_variable = { et_arms_market_equipment_to_sell = current_equipment }
+					}
+				}
+			}
+			remove_request_button_visible = {
+				ROOT = { is_ai = no }
+				tag = ROOT
+			}
+			remove_request_button_click_enabled = {
+				check_variable = { v > 0 }
+				ROOT = {
+					NOT = { check_variable = { show_et_arms_market_create_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_request_window > 0 } }
+				}
+				set_temp_variable = { current_equipment = i }
+				add_to_temp_variable = { current_equipment = 1 }
+				NOT = {
+					any_country = {
+						check_variable = { et_arms_market_buyer = PREV.id }
+						check_variable = { et_arms_market_equipment_to_sell = current_equipment }
+					}
+				}
+			}
+			no_requests_info_visible = {
+				check_variable = { global.et_arms_market_requests_array^num < 1 }
+			}
+			ai_select_request_entry_button_visible = {
+				ROOT = {
+					is_ai = yes
+					is_major = yes
+					NOT = { check_variable = { show_et_arms_market_create_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_offer_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_offer_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_create_request_equipment_menu_window > 0 } }
+					NOT = { check_variable = { show_et_arms_market_take_request_window > 0 } }
+				}
+				any_of = {
+					array = our_et_arms_market_requests
+					value = v
+					index = i
+					check_variable = { v > 0 }
+					set_temp_variable = { current_equipment = i }
+					add_to_temp_variable = { current_equipment = 1 }
+					ROOT = {
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] > 0
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentListName]"
+						}
+					}
+					NOT = {
+						any_country = {
+							check_variable = { et_arms_market_buyer = PREV.id }
+							check_variable = { et_arms_market_equipment_to_sell = current_equipment }
+						}
+					}
+				}
+			}
+		}
+		
+		properties = {
+			entry_flag = {
+				image = "[This.GetFlag]"
+			}
+		}
+		
+		dynamic_lists = {
+			# Offers
+			et_arms_market_offers_gridbox = {
+				array = global.et_arms_market_offers_array
+				entry_container = et_arms_market_offers_entry
+				change_scope = yes
+				
+				ai_weights = {
+					entry_flag_click = {
+						ai_will_do = {
+							factor = 0
+						}
+					}
+					ai_select_offer_entry_button_click = {
+						ai_will_do = {
+							factor = 0
+							# modifiers for who to select
+						}
+					}
+				}
+			}
+			et_arms_market_country_offers_gridbox = {
+				array = our_et_arms_market_offers
+				entry_container = et_arms_market_country_offers_entry
+			}
+			
+			# Requests
+			et_arms_market_requests_gridbox = {
+				array = global.et_arms_market_requests_array
+				entry_container = et_arms_market_requests_entry
+				change_scope = yes
+				
+				ai_weights = {
+					entry_flag_click = {
+						ai_will_do = {
+							factor = 0
+						}
+					}
+					ai_select_request_entry_button_click = {
+						ai_will_do = {
+							factor = 0
+							# modifiers for who to select
+						}
+					}
+				}
+			}
+			et_arms_market_country_requests_gridbox = {
+				array = our_et_arms_market_requests
+				entry_container = et_arms_market_country_requests_entry
+			}
+		}
+		
+		ai_enabled = {
+			always = no
+		}
+		
+		ai_test_interval = 48
+		ai_test_variance = 0.2
+		
+		ai_check = {
+			always = yes
+		}
+		
+		ai_max_weight_taken_per_test = 10
+		ai_weights = {
+			close_button_click = {
+				ai_will_do = {
+					factor = 1
+				}
+			}
+			create_offer_button_click = {
+				ai_will_do = {
+					factor = 0
+				}
+			}
+			create_request_button_click = {
+				ai_will_do = {
+					factor = 0
+				}
+			}
+		}
+	}
+	
+	# Offers
+	et_arms_market_create_offer_window = {
+		context_type = player_context
+		
+		window_name = "et_arms_market_create_offer_window"
+		
+		visible = {
+			check_variable = { show_et_arms_market_create_offer_window > 0 }
+		}
+		
+		effects = {
+			cancel_button_click = {
+				clear_variable = et_arms_market_amount_to_sell
+				clear_variable = et_arms_market_equipment_to_sell
+				clear_variable = show_et_arms_market_create_offer_equipment_menu_window
+				clear_variable = show_et_arms_market_create_offer_window
+			}
+			send_button_click = {
+				resize_array = {
+					array = our_et_arms_market_offers
+					value = 0
+					size = @TOTAL_NUM_OF_EQUIPMENTS
+				}
+				set_temp_variable = { et_arms_market_equipment_to_sell_temp = et_arms_market_equipment_to_sell }
+				subtract_from_temp_variable = { et_arms_market_equipment_to_sell_temp = 1 }
+				set_variable = { our_et_arms_market_offers^et_arms_market_equipment_to_sell_temp = et_arms_market_amount_to_sell }
+				if = {
+					limit = {
+						NOT = { is_in_array = { global.et_arms_market_offers_array = THIS.id } }
+					}
+					add_to_array = { global.et_arms_market_offers_array = THIS.id }
+				}
+				### start remove equipment
+				set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+				set_temp_variable = { et_arms_market_amount_to_sell_temp = et_arms_market_amount_to_sell }
+				multiply_temp_variable = { et_arms_market_amount_to_sell_temp = -1 }
+				meta_effect = {
+					text = {
+						add_equipment_to_stockpile = {
+							type = [EQUIPMENT]
+							amount = [AMOUNT]
+						}
+					}
+					EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					AMOUNT = "[?et_arms_market_amount_to_sell_temp]"
+				}
+				### end remove equipment
+				clear_variable = et_arms_market_amount_to_sell
+				clear_variable = et_arms_market_equipment_to_sell
+				clear_variable = show_et_arms_market_create_offer_equipment_menu_window
+				clear_variable = show_et_arms_market_create_offer_window
+			}
+			
+			subtract_button_click = {
+				subtract_from_variable = { et_arms_market_amount_to_sell = 1 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_sell = 0 }
+				}
+			}
+			subtract_button_control_click = {
+				subtract_from_variable = { et_arms_market_amount_to_sell = 10 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_sell = 0 }
+				}
+			}
+			subtract_button_shift_click = {
+				subtract_from_variable = { et_arms_market_amount_to_sell = 100 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_sell = 0 }
+				}
+			}
+			subtract_button_alt_click = {
+				subtract_from_variable = { et_arms_market_amount_to_sell = 1000 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_sell = 0 }
+				}
+			}
+			subtract_button_control_shift_click = {
+				set_variable = { et_arms_market_amount_to_sell = 0 }
+			}
+			add_button_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 1 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_sell < 0 }
+							check_variable = { et_arms_market_amount_to_sell > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_sell = 2000000 }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			add_button_control_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 10 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_sell < 0 }
+							check_variable = { et_arms_market_amount_to_sell > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_sell = 2000000 }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			add_button_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 100 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_sell < 0 }
+							check_variable = { et_arms_market_amount_to_sell > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_sell = 2000000 }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			add_button_alt_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 1000 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_sell < 0 }
+							check_variable = { et_arms_market_amount_to_sell > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_sell = 2000000 }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			add_button_control_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 10000 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_sell < 0 }
+							check_variable = { et_arms_market_amount_to_sell > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_sell = 2000000 }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			add_button_control_alt_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 100000 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_sell < 0 }
+							check_variable = { et_arms_market_amount_to_sell > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_sell = 2000000 }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			
+			open_equipments_menu_button_click = {
+				clear_array = et_arms_market_equipments_array
+				for_loop_effect = {
+					start = 0
+					end = @TOTAL_NUM_OF_EQUIPMENTS
+					value = j
+					set_temp_variable = { j_temp = j }
+					add_to_temp_variable = { j_temp = 1 }
+					add_to_array = { et_arms_market_equipments_array = j_temp }
+				}
+				set_variable = { show_et_arms_market_create_offer_equipment_menu_window = 1 }
+			}
+			close_equipments_menu_button_click = {
+				clear_array = et_arms_market_equipments_array
+				clear_variable = show_et_arms_market_create_offer_equipment_menu_window
+			}
+		}
+		
+		triggers = {
+			send_button_click_enabled = {
+				has_variable = et_arms_market_amount_to_sell
+			}
+			
+			subtract_button_click_enabled = {
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_CREATE_OFFER_HAS_SELECTED_EQUIPMENT
+					has_variable = et_arms_market_equipment_to_sell
+				}
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_VALUE_IS_HIGHER_THAN_0
+					check_variable = { et_arms_market_amount_to_sell > 0 }
+				}
+			}
+			add_button_click_enabled = {
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_CREATE_OFFER_HAS_SELECTED_EQUIPMENT
+					has_variable = et_arms_market_equipment_to_sell
+				}
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_VALUE_IS_LOWER_THAN_2M
+					check_variable = { et_arms_market_amount_to_sell < 2000000 }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+					}
+					set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+					set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+					custom_trigger_tooltip = {
+						tooltip = ET_ARMS_MARKET_HAS_AT_LEAST_AMOUNT_OF_EQUIPMENT
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] > [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+				}
+			}
+			
+			open_equipments_menu_button_visible = {
+				NOT = { has_variable = show_et_arms_market_create_offer_equipment_menu_window }
+			}
+			close_equipments_menu_button_visible = {
+				has_variable = show_et_arms_market_create_offer_equipment_menu_window
+			}
+		}
+	}
+	
+	et_arms_market_create_offer_equipment_menu_window = {
+		context_type = player_context
+		
+		window_name = "et_arms_market_create_offer_equipment_menu_window"
+		parent_window_name = "et_arms_market_create_offer_window"
+		
+		visible = {
+			has_variable = show_et_arms_market_create_offer_equipment_menu_window
+		}
+		
+		effects = {
+			entry_button_click = {
+				set_variable = { et_arms_market_equipment_to_sell = v }
+				clear_array = et_arms_market_equipments_array
+				clear_variable = show_et_arms_market_create_offer_equipment_menu_window
+			}
+		}
+		
+		triggers = {
+			entry_button_click_enabled = {
+				set_temp_variable = { v_temp = v }
+				subtract_from_temp_variable = { v_temp = 1 }
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_NO_OFFER_FOR_THAT_EQUIPMENT_TYPE
+					check_variable = { our_et_arms_market_offers^v_temp = 0 }
+				}
+				set_temp_variable = { et_arms_market_equipment_id = v }
+				set_temp_variable = { amount_to_check_for = 0 }
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_HAS_AT_LEAST_AMOUNT_OF_EQUIPMENT
+					meta_trigger = {
+						text = {
+							has_equipment = {
+								[EQUIPMENT] > [AMOUNT]
+							}
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+						AMOUNT = "[?amount_to_check_for]"
+					}
+				}
+			}
+		}
+		
+		dynamic_lists = {
+			et_arms_market_equipments_gridbox = {
+				array = et_arms_market_equipments_array
+				entry_container = et_arms_market_equipments_entry
+			}
+		}
+	}
+	
+	et_arms_market_take_offer_window = {
+		context_type = player_context
+		
+		window_name = "et_arms_market_take_offer_window"
+		
+		visible = {
+			check_variable = { show_et_arms_market_take_offer_window > 0 }
+		}
+		
+		effects = {
+			cancel_button_click = {
+				clear_variable = et_arms_market_amount_to_buy
+				clear_variable = et_arms_market_amount_to_buy_max
+				clear_variable = et_arms_market_equipment_to_buy
+				clear_variable = et_arms_market_seller
+				clear_variable = show_et_arms_market_take_offer_equipment_menu_window
+				clear_variable = show_et_arms_market_take_offer_window
+			}
+			send_button_click = {
+				set_temp_variable = { et_arms_market_equipment_to_buy_temp = et_arms_market_equipment_to_buy }
+				subtract_from_temp_variable = { et_arms_market_equipment_to_buy_temp = 1 }
+				var:et_arms_market_seller = {
+					subtract_from_variable = { our_et_arms_market_offers^et_arms_market_equipment_to_buy_temp = ROOT.et_arms_market_amount_to_buy }
+					if = {
+						limit = {
+							all_of = {
+								array = our_et_arms_market_offers
+								value = v
+								check_variable = { v = 0 }
+							}
+						}
+						clear_array = our_et_arms_market_offers
+						remove_from_array = { global.et_arms_market_offers_array = THIS.id }
+					}
+					if = {
+						limit = {
+							is_ai = no
+						}
+						add_to_array = { et_arms_market_offer_accepted_popup_array = ROOT.id }
+					}
+				}
+				### start add equipment
+				set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_buy }
+				meta_effect = {
+					text = {
+						add_equipment_to_stockpile = {
+							type = [EQUIPMENT]
+							amount = [AMOUNT]
+						}
+					}
+					EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					AMOUNT = "[?et_arms_market_amount_to_buy]"
+				}
+				### end add equipment
+				clear_variable = et_arms_market_amount_to_buy
+				clear_variable = et_arms_market_amount_to_buy_max
+				clear_variable = et_arms_market_equipment_to_buy
+				clear_variable = et_arms_market_seller
+				clear_variable = show_et_arms_market_take_offer_equipment_menu_window
+				clear_variable = show_et_arms_market_take_offer_window
+			}
+			
+			subtract_button_click = {
+				subtract_from_variable = { et_arms_market_amount_to_buy = 1 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_buy = 0 }
+				}
+			}
+			subtract_button_control_click = {
+				subtract_from_variable = { et_arms_market_amount_to_buy = 10 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_buy = 0 }
+				}
+			}
+			subtract_button_shift_click = {
+				subtract_from_variable = { et_arms_market_amount_to_buy = 100 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_buy = 0 }
+				}
+			}
+			subtract_button_alt_click = {
+				subtract_from_variable = { et_arms_market_amount_to_buy = 1000 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_buy = 0 }
+				}
+			}
+			subtract_button_control_shift_click = {
+				set_variable = { et_arms_market_amount_to_buy = 0 }
+			}
+			add_button_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 1 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy > et_arms_market_amount_to_buy_max }
+					}
+					set_variable = { et_arms_market_amount_to_buy = et_arms_market_amount_to_buy_max }
+				}
+			}
+			add_button_control_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 10 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy > et_arms_market_amount_to_buy_max }
+					}
+					set_variable = { et_arms_market_amount_to_buy = et_arms_market_amount_to_buy_max }
+				}
+			}
+			add_button_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 100 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy > et_arms_market_amount_to_buy_max }
+					}
+					set_variable = { et_arms_market_amount_to_buy = et_arms_market_amount_to_buy_max }
+				}
+			}
+			add_button_alt_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 1000 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy > et_arms_market_amount_to_buy_max }
+					}
+					set_variable = { et_arms_market_amount_to_buy = et_arms_market_amount_to_buy_max }
+				}
+			}
+			add_button_control_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 10000 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy > et_arms_market_amount_to_buy_max }
+					}
+					set_variable = { et_arms_market_amount_to_buy = et_arms_market_amount_to_buy_max }
+				}
+			}
+			add_button_control_alt_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 100000 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy > et_arms_market_amount_to_buy_max }
+					}
+					set_variable = { et_arms_market_amount_to_buy = et_arms_market_amount_to_buy_max }
+				}
+			}
+		}
+		
+		triggers = {
+			send_button_click_enabled = {
+				check_variable = { et_arms_market_amount_to_buy > 0 }
+				NOT = { check_variable = { et_arms_market_amount_to_buy > et_arms_market_amount_to_buy_max } }
+			}
+			
+			subtract_button_click_enabled = {
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_VALUE_IS_HIGHER_THAN_0
+					check_variable = { et_arms_market_amount_to_buy > 0 }
+				}
+			}
+			add_button_click_enabled = {
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_TAKE_OFFER_VALUE_IS_LOWER_THAN_MAX
+					check_variable = { et_arms_market_amount_to_buy < et_arms_market_amount_to_buy_max }
+				}
+			}
+		}
+	}
+	
+	# Requests
+	et_arms_market_create_request_window = {
+		context_type = player_context
+		
+		window_name = "et_arms_market_create_request_window"
+		
+		visible = {
+			check_variable = { show_et_arms_market_create_request_window > 0 }
+		}
+		
+		effects = {
+			cancel_button_click = {
+				clear_variable = et_arms_market_amount_to_buy
+				clear_variable = et_arms_market_equipment_to_buy
+				clear_variable = show_et_arms_market_create_request_equipment_menu_window
+				clear_variable = show_et_arms_market_create_request_window
+			}
+			send_button_click = {
+				resize_array = {
+					array = our_et_arms_market_requests
+					value = 0
+					size = @TOTAL_NUM_OF_EQUIPMENTS
+				}
+				set_temp_variable = { et_arms_market_equipment_to_buy_temp = et_arms_market_equipment_to_buy }
+				subtract_from_temp_variable = { et_arms_market_equipment_to_buy_temp = 1 }
+				set_variable = { our_et_arms_market_requests^et_arms_market_equipment_to_buy_temp = et_arms_market_amount_to_buy }
+				if = {
+					limit = {
+						NOT = { is_in_array = { global.et_arms_market_requests_array = THIS.id } }
+					}
+					add_to_array = { global.et_arms_market_requests_array = THIS.id }
+				}
+				clear_variable = et_arms_market_amount_to_buy
+				clear_variable = et_arms_market_equipment_to_buy
+				clear_variable = show_et_arms_market_create_request_equipment_menu_window
+				clear_variable = show_et_arms_market_create_request_window
+			}
+			
+			subtract_button_click = {
+				subtract_from_variable = { et_arms_market_amount_to_buy = 1 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_buy = 0 }
+				}
+			}
+			subtract_button_control_click = {
+				subtract_from_variable = { et_arms_market_amount_to_buy = 10 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_buy = 0 }
+				}
+			}
+			subtract_button_shift_click = {
+				subtract_from_variable = { et_arms_market_amount_to_buy = 100 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_buy = 0 }
+				}
+			}
+			subtract_button_alt_click = {
+				subtract_from_variable = { et_arms_market_amount_to_buy = 1000 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_buy < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_buy = 0 }
+				}
+			}
+			subtract_button_control_shift_click = {
+				set_variable = { et_arms_market_amount_to_buy = 0 }
+			}
+			add_button_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 1 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_buy < 0 }
+							check_variable = { et_arms_market_amount_to_buy > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_buy = 2000000 }
+				}
+			}
+			add_button_control_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 10 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_buy < 0 }
+							check_variable = { et_arms_market_amount_to_buy > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_buy = 2000000 }
+				}
+			}
+			add_button_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 100 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_buy < 0 }
+							check_variable = { et_arms_market_amount_to_buy > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_buy = 2000000 }
+				}
+			}
+			add_button_alt_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 1000 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_buy < 0 }
+							check_variable = { et_arms_market_amount_to_buy > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_buy = 2000000 }
+				}
+			}
+			add_button_control_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 10000 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_buy < 0 }
+							check_variable = { et_arms_market_amount_to_buy > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_buy = 2000000 }
+				}
+			}
+			add_button_control_alt_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_buy = 100000 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { et_arms_market_amount_to_buy < 0 }
+							check_variable = { et_arms_market_amount_to_buy > 2000000 }
+						}
+					}
+					set_variable = { et_arms_market_amount_to_buy = 2000000 }
+				}
+			}
+			
+			open_equipments_menu_button_click = {
+				clear_array = et_arms_market_equipments_array
+				for_loop_effect = {
+					start = 0
+					end = @TOTAL_NUM_OF_EQUIPMENTS
+					value = j
+					set_temp_variable = { j_temp = j }
+					add_to_temp_variable = { j_temp = 1 }
+					add_to_array = { et_arms_market_equipments_array = j_temp }
+				}
+				set_variable = { show_et_arms_market_create_request_equipment_menu_window = 1 }
+			}
+			close_equipments_menu_button_click = {
+				clear_array = et_arms_market_equipments_array
+				clear_variable = show_et_arms_market_create_request_equipment_menu_window
+			}
+		}
+		
+		triggers = {
+			send_button_click_enabled = {
+				has_variable = et_arms_market_amount_to_buy
+			}
+			
+			subtract_button_click_enabled = {
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_CREATE_OFFER_HAS_SELECTED_EQUIPMENT
+					has_variable = et_arms_market_equipment_to_buy
+				}
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_VALUE_IS_HIGHER_THAN_0
+					check_variable = { et_arms_market_amount_to_buy > 0 }
+				}
+			}
+			add_button_click_enabled = {
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_CREATE_OFFER_HAS_SELECTED_EQUIPMENT
+					has_variable = et_arms_market_equipment_to_buy
+				}
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_VALUE_IS_LOWER_THAN_2M
+					check_variable = { et_arms_market_amount_to_buy < 2000000 }
+				}
+			}
+			
+			open_equipments_menu_button_visible = {
+				NOT = { has_variable = show_et_arms_market_create_request_equipment_menu_window }
+			}
+			close_equipments_menu_button_visible = {
+				has_variable = show_et_arms_market_create_request_equipment_menu_window
+			}
+		}
+	}
+	
+	et_arms_market_create_request_equipment_menu_window = {
+		context_type = player_context
+		
+		window_name = "et_arms_market_create_request_equipment_menu_window"
+		parent_window_name = "et_arms_market_create_request_window"
+		
+		visible = {
+			has_variable = show_et_arms_market_create_request_equipment_menu_window
+		}
+		
+		effects = {
+			entry_button_click = {
+				set_variable = { et_arms_market_equipment_to_buy = v }
+				clear_array = et_arms_market_equipments_array
+				clear_variable = show_et_arms_market_create_request_equipment_menu_window
+			}
+		}
+		
+		triggers = {
+			entry_button_click_enabled = {
+				set_temp_variable = { v_temp = v }
+				subtract_from_temp_variable = { v_temp = 1 }
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_NO_REQUEST_FOR_THAT_EQUIPMENT_TYPE
+					check_variable = { our_et_arms_market_requests^v_temp = 0 }
+				}
+				set_temp_variable = { equipment_to_request = v }
+				has_researched_equipment_to_request_on_et_arms_market = yes
+			}
+		}
+		
+		dynamic_lists = {
+			et_arms_market_equipments_gridbox = {
+				array = et_arms_market_equipments_array
+				entry_container = et_arms_market_equipments_entry
+			}
+		}
+	}
+	
+	et_arms_market_take_request_window = {
+		context_type = player_context
+		
+		window_name = "et_arms_market_take_request_window"
+		
+		visible = {
+			check_variable = { show_et_arms_market_take_request_window > 0 }
+		}
+		
+		effects = {
+			cancel_button_click = {
+				clear_variable = et_arms_market_amount_to_sell
+				clear_variable = et_arms_market_amount_to_sell_max
+				clear_variable = et_arms_market_equipment_to_sell
+				clear_variable = et_arms_market_buyer
+				clear_variable = show_et_arms_market_take_request_equipment_menu_window
+				clear_variable = show_et_arms_market_take_request_window
+			}
+			send_button_click = {
+				set_temp_variable = { et_arms_market_equipment_to_sell_temp = et_arms_market_equipment_to_sell }
+				subtract_from_temp_variable = { et_arms_market_equipment_to_sell_temp = 1 }
+				var:et_arms_market_buyer = {
+					subtract_from_variable = { our_et_arms_market_requests^et_arms_market_equipment_to_sell_temp = ROOT.et_arms_market_amount_to_sell }
+					if = {
+						limit = {
+							all_of = {
+								array = our_et_arms_market_requests
+								value = v
+								check_variable = { v = 0 }
+							}
+						}
+						clear_array = our_et_arms_market_requests
+						remove_from_array = { global.et_arms_market_requests_array = THIS.id }
+					}
+					if = {
+						limit = {
+							is_ai = no
+						}
+						add_to_array = { et_arms_market_request_accepted_popup_array = ROOT.id }
+					}
+				}
+				### start add equipment
+				set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+				meta_effect = {
+					text = {
+						var:et_arms_market_buyer = {
+							add_equipment_to_stockpile = {
+								type = [EQUIPMENT]
+								amount = [AMOUNT]
+							}
+						}
+					}
+					EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					AMOUNT = "[?Root.et_arms_market_amount_to_sell]"
+				}
+				### end add equipment
+				### start remove equipment
+				set_temp_variable = { et_arms_market_amount_to_sell_temp = et_arms_market_amount_to_sell }
+				multiply_temp_variable = { et_arms_market_amount_to_sell_temp = -1 }
+				meta_effect = {
+					text = {
+						add_equipment_to_stockpile = {
+							type = [EQUIPMENT]
+							amount = [AMOUNT]
+						}
+					}
+					EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					AMOUNT = "[?et_arms_market_amount_to_sell_temp]"
+				}
+				### end remove equipment
+				clear_variable = et_arms_market_amount_to_sell
+				clear_variable = et_arms_market_amount_to_sell_max
+				clear_variable = et_arms_market_equipment_to_sell
+				clear_variable = et_arms_market_buyer
+				clear_variable = show_et_arms_market_take_request_equipment_menu_window
+				clear_variable = show_et_arms_market_take_request_window
+			}
+			
+			subtract_button_click = {
+				subtract_from_variable = { et_arms_market_amount_to_sell = 1 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_sell = 0 }
+				}
+			}
+			subtract_button_control_click = {
+				subtract_from_variable = { et_arms_market_amount_to_sell = 10 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_sell = 0 }
+				}
+			}
+			subtract_button_shift_click = {
+				subtract_from_variable = { et_arms_market_amount_to_sell = 100 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_sell = 0 }
+				}
+			}
+			subtract_button_alt_click = {
+				subtract_from_variable = { et_arms_market_amount_to_sell = 1000 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell < 0 }
+					}
+					set_variable = { et_arms_market_amount_to_sell = 0 }
+				}
+			}
+			subtract_button_control_shift_click = {
+				set_variable = { et_arms_market_amount_to_sell = 0 }
+			}
+			add_button_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 1 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell > et_arms_market_amount_to_sell_max }
+					}
+					set_variable = { et_arms_market_amount_to_sell = et_arms_market_amount_to_sell_max }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			add_button_control_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 10 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell > et_arms_market_amount_to_sell_max }
+					}
+					set_variable = { et_arms_market_amount_to_sell = et_arms_market_amount_to_sell_max }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			add_button_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 100 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell > et_arms_market_amount_to_sell_max }
+					}
+					set_variable = { et_arms_market_amount_to_sell = et_arms_market_amount_to_sell_max }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			add_button_alt_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 1000 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell > et_arms_market_amount_to_sell_max }
+					}
+					set_variable = { et_arms_market_amount_to_sell = et_arms_market_amount_to_sell_max }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			add_button_control_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 10000 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell > et_arms_market_amount_to_sell_max }
+					}
+					set_variable = { et_arms_market_amount_to_sell = et_arms_market_amount_to_sell_max }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+			add_button_control_alt_shift_click = {
+				add_to_variable = { et_arms_market_amount_to_sell = 100000 }
+				if = {
+					limit = {
+						check_variable = { et_arms_market_amount_to_sell > et_arms_market_amount_to_sell_max }
+					}
+					set_variable = { et_arms_market_amount_to_sell = et_arms_market_amount_to_sell_max }
+				}
+				if = {
+					limit = {
+						check_variable = { et_arms_market_equipment_to_sell > 0 }
+						set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+						set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+						meta_trigger = {
+							text = {
+								has_equipment = {
+									[EQUIPMENT] < [AMOUNT]
+								}
+							}
+							EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+							AMOUNT = "[?amount_to_check_for]"
+						}
+					}
+					meta_effect = {
+						text = {
+							set_variable = { et_arms_market_amount_to_sell = num_equipment@[EQUIPMENT] }
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					}
+				}
+			}
+		}
+		
+		triggers = {
+			send_button_click_enabled = {
+				check_variable = { et_arms_market_amount_to_sell > 0 }
+				NOT = { check_variable = { et_arms_market_amount_to_sell > et_arms_market_amount_to_sell_max } }
+				set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+				meta_trigger = {
+					text = {
+						NOT = {
+							has_equipment = {
+								[EQUIPMENT] < [AMOUNT]
+							}
+						}
+					}
+					EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+					AMOUNT = "[?et_arms_market_amount_to_sell]"
+				}
+			}
+			
+			subtract_button_click_enabled = {
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_VALUE_IS_HIGHER_THAN_0
+					check_variable = { et_arms_market_amount_to_sell > 0 }
+				}
+			}
+			add_button_click_enabled = {
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_TAKE_REQUEST_VALUE_IS_LOWER_THAN_MAX
+					check_variable = { et_arms_market_amount_to_sell < et_arms_market_amount_to_sell_max }
+				}
+				set_temp_variable = { et_arms_market_equipment_id = et_arms_market_equipment_to_sell }
+				set_temp_variable = { amount_to_check_for = et_arms_market_amount_to_sell }
+				custom_trigger_tooltip = {
+					tooltip = ET_ARMS_MARKET_HAS_AT_LEAST_AMOUNT_OF_EQUIPMENT
+					meta_trigger = {
+						text = {
+							has_equipment = {
+								[EQUIPMENT] > [AMOUNT]
+							}
+						}
+						EQUIPMENT = "[This.GetArmsMarketEquipmentNameOtherContext]"
+						AMOUNT = "[?amount_to_check_for]"
+					}
+				}
+			}
+		}
+	}
+	
+	# Pop Ups
+	et_arms_market_offer_accepted_popup_window = {
+		context_type = player_context
+		
+		window_name = "et_arms_market_offer_accepted_popup_window"
+		
+		visible = {
+			is_ai = no
+			check_variable = { et_arms_market_offer_accepted_popup_array^num > 0 }
+		}
+		
+		effects = {
+			ok_button_click = {
+				ROOT = {
+					remove_from_array = { et_arms_market_offer_accepted_popup_array = PREV.id }
+				}
+			}
+		}
+		
+		dynamic_lists = {
+			et_arms_market_offer_accepted_popup_gridbox = {
+				array = et_arms_market_offer_accepted_popup_array
+				entry_container = et_arms_market_offer_accepted_popup_entry
+				change_scope = yes
+			}
+		}
+	}
+	
+	et_arms_market_request_accepted_popup_window = {
+		context_type = player_context
+		
+		window_name = "et_arms_market_request_accepted_popup_window"
+		
+		visible = {
+			is_ai = no
+			check_variable = { et_arms_market_request_accepted_popup_array^num > 0 }
+		}
+		
+		effects = {
+			ok_button_click = {
+				ROOT = {
+					remove_from_array = { et_arms_market_request_accepted_popup_array = PREV.id }
+				}
+			}
+		}
+		
+		dynamic_lists = {
+			et_arms_market_request_accepted_popup_gridbox = {
+				array = et_arms_market_request_accepted_popup_array
+				entry_container = et_arms_market_request_accepted_popup_entry
+				change_scope = yes
+			}
+		}
+	}
+}

@@ -1,0 +1,21 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_et_un_council_bg"
+		textureFile = "gfx/interface/et_un_council/et_un_council_bg.dds"
+		effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
+	}
+	spriteType = {
+		name = "GFX_et_un_council_colors"
+		textureFile = "gfx/interface/et_un_council/et_un_council_colors.dds"
+		noOfFrames = 4
+	}
+	spriteType = {
+		name = "GFX_et_un_council_member_flag_frame"
+		textureFile = "gfx/interface/et_un_council/et_un_council_member_flag_frame.dds"
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_et_un_council_box"
+		textureFile = "gfx/interface/et_un_council/et_un_council_box.dds"
+	}
+}

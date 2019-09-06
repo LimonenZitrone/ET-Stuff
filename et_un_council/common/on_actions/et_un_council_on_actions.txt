@@ -1,0 +1,30 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			random_country = {
+				clear_array = global.un_council_members
+				add_to_array = { global.un_council_members = GER.id }
+				add_to_array = { global.un_council_members = ENG.id }
+				add_to_array = { global.un_council_members = FRA.id }
+				add_to_array = { global.un_council_members = USA.id }
+				add_to_array = { global.un_council_members = ITA.id }
+				add_to_array = { global.un_council_members = SOV.id }
+				add_to_array = { global.un_council_members = SWE.id }
+				add_to_array = { global.un_council_members = NOR.id }
+				add_to_array = { global.un_council_members = DEN.id }
+				add_to_array = { global.un_council_members = MEX.id }
+				add_to_array = { global.un_council_members = CZE.id }
+				add_to_array = { global.un_council_members = POL.id }
+				add_to_array = { global.un_council_members = ROM.id }
+				add_to_array = { global.un_council_members = YUG.id }
+				add_to_array = { global.un_council_members = SWI.id }
+				
+				resize_array = {
+					array = global.un_council_members
+					value = 0
+					size = 15
+				}
+			}
+		}
+	}
+}

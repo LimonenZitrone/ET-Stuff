@@ -1,0 +1,103 @@
+﻿l_english:
+ # GUI:
+ ET_UN_COUNCIL_TITLE: "UN SECURITY COUNCIL"
+ 
+ ET_UN_COUNCIL_CURRENT_VOTING_TEXT: "[This.GetCurrentVotingText]"
+ ET_UN_COUNCIL_CURRENT_VOTE_YES_VOTES_TT: "[?global.un_council_yes_votes|G0] countries support the current vote."
+ ET_UN_COUNCIL_CURRENT_VOTE_NO_VOTES_TT: "[?global.un_council_no_votes|R0] countries veto the current vote."
+ ET_UN_COUNCIL_CURRENT_VOTE_YES_BUTTON_TT: "§GClick§! to §Ysupport§! the current vote."
+ ET_UN_COUNCIL_CURRENT_VOTE_NO_BUTTON_TT: "§GClick§! to §Yveto§! the current vote."
+ 
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_1: "§Y[?global.un_council_members^0.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_2: "§Y[?global.un_council_members^1.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_3: "§Y[?global.un_council_members^2.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_4: "§Y[?global.un_council_members^3.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_5: "§Y[?global.un_council_members^4.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_6: "§Y[?global.un_council_members^5.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_7: "§Y[?global.un_council_members^6.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_8: "§Y[?global.un_council_members^7.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_9: "§Y[?global.un_council_members^8.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_10: "§Y[?global.un_council_members^9.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_11: "§Y[?global.un_council_members^10.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_12: "§Y[?global.un_council_members^11.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_13: "§Y[?global.un_council_members^12.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_14: "§Y[?global.un_council_members^13.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_15: "§Y[?global.un_council_members^14.GetNameWithFlag]§! is a member of the §YUN Security Council§!. \nThe colors next to the flag show their current vote, their opinion of us and their faction status."
+ 
+ ET_UN_COUNCIL_FLAG_BUTTON_TT_DELAYED: "§GClick§! to center the map on their capital state."
+ 
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_1: "[This.GetCurrentVoteIndicatorTooltip1]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_2: "[This.GetCurrentVoteIndicatorTooltip2]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_3: "[This.GetCurrentVoteIndicatorTooltip3]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_4: "[This.GetCurrentVoteIndicatorTooltip4]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_5: "[This.GetCurrentVoteIndicatorTooltip5]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_6: "[This.GetCurrentVoteIndicatorTooltip6]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_7: "[This.GetCurrentVoteIndicatorTooltip7]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_8: "[This.GetCurrentVoteIndicatorTooltip8]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_9: "[This.GetCurrentVoteIndicatorTooltip9]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_10: "[This.GetCurrentVoteIndicatorTooltip10]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_11: "[This.GetCurrentVoteIndicatorTooltip11]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_12: "[This.GetCurrentVoteIndicatorTooltip12]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_13: "[This.GetCurrentVoteIndicatorTooltip13]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_14: "[This.GetCurrentVoteIndicatorTooltip14]"
+ ET_UN_COUNCIL_CURRENT_VOTE_INDICATOR_TT_15: "[This.GetCurrentVoteIndicatorTooltip15]"
+ 
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_1: "[This.GetOpinionIndicatorTooltip1]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_2: "[This.GetOpinionIndicatorTooltip2]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_3: "[This.GetOpinionIndicatorTooltip3]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_4: "[This.GetOpinionIndicatorTooltip4]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_5: "[This.GetOpinionIndicatorTooltip5]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_6: "[This.GetOpinionIndicatorTooltip6]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_7: "[This.GetOpinionIndicatorTooltip7]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_8: "[This.GetOpinionIndicatorTooltip8]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_9: "[This.GetOpinionIndicatorTooltip9]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_10: "[This.GetOpinionIndicatorTooltip10]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_11: "[This.GetOpinionIndicatorTooltip11]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_12: "[This.GetOpinionIndicatorTooltip12]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_13: "[This.GetOpinionIndicatorTooltip13]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_14: "[This.GetOpinionIndicatorTooltip14]"
+ ET_UN_COUNCIL_OPINION_INDICATOR_TT_15: "[This.GetOpinionIndicatorTooltip15]"
+ 
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_1: "[This.GetFactionIndicatorTooltip1]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_2: "[This.GetFactionIndicatorTooltip2]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_3: "[This.GetFactionIndicatorTooltip3]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_4: "[This.GetFactionIndicatorTooltip4]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_5: "[This.GetFactionIndicatorTooltip5]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_6: "[This.GetFactionIndicatorTooltip6]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_7: "[This.GetFactionIndicatorTooltip7]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_8: "[This.GetFactionIndicatorTooltip8]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_9: "[This.GetFactionIndicatorTooltip9]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_10: "[This.GetFactionIndicatorTooltip10]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_11: "[This.GetFactionIndicatorTooltip11]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_12: "[This.GetFactionIndicatorTooltip12]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_13: "[This.GetFactionIndicatorTooltip13]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_14: "[This.GetFactionIndicatorTooltip14]"
+ ET_UN_COUNCIL_FACTION_INDICATOR_TT_15: "[This.GetFactionIndicatorTooltip15]"
+ 
+ # Scripted Localisation:
+ string_un_current_vote_text: "There currently is a vote about §Y???§!."
+ string_un_no_current_vote_text: "There currently is no vote in the §YUN Security Council§!."
+ 
+ string_indicator_invalid: "There is no member in this seat."
+ 
+ string_current_vote_indicator_yes: "§Y[?selected_un_council_member.GetNameWithFlag]§! §Gsupports§! the current vote."
+ string_current_vote_indicator_no: "§Y[?selected_un_council_member.GetNameWithFlag]§! §Rvetoes§! the current vote."
+ string_current_vote_indicator_none: "§Y[?selected_un_council_member.GetNameWithFlag]§! has no opinion on the current vote."
+ 
+ string_opinion_indicator_thats_us: "We are [?selected_un_council_member.GetFlag] §Y[?selected_un_council_member.GetNameDef]§!."
+ string_opinion_indicator_positive: "§Y[?selected_un_council_member.GetNameWithFlag]§! has a positive opinion of us ([?selected_un_council_member_opinion|+0])."
+ string_opinion_indicator_negative: "§Y[?selected_un_council_member.GetNameWithFlag]§! has a negative opinion of us ([?selected_un_council_member_opinion|+0])."
+ 
+ string_faction_indicator_same: "§Y[?selected_un_council_member.GetNameWithFlag]§! is in the same faction as us (§Y[?selected_un_council_member.GetFactionName]§!)."
+ string_faction_indicator_other: "§Y[?selected_un_council_member.GetNameWithFlag]§! is in a different faction than us (§Y[?selected_un_council_member.GetFactionName]§!)."
+ string_faction_indicator_none: "§Y[?selected_un_council_member.GetNameWithFlag]§! is not in a faction."
+ 
+ # Decisions:
+ et_un_council_category: "UN Security Council"
+ et_un_council_category_desc: ""
+ 
+ open_un_council_gui: "Open UN Security Council Window"
+ open_un_council_gui_desc: "Use this decision to open the §YUN Security Council§! window."
+ 
+ OPEN_ET_UN_COUNCIL_GUI_TT: "Opens the §YUN Security Council§! window.\n"
+ 

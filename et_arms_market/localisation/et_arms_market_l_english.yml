@@ -1,0 +1,112 @@
+﻿l_english:
+ # GUI:
+ OPEN_ET_ARMS_MARKET_WINDOW_BUTTON_TT: "§GClick§! to open or close the §YArms Market§!."
+ 
+ ET_ARMS_MARKET_ENTRY_FLAG_TT: "§GClick§! to center the map on the capital state of §Y[This.GetNameWithFlag]§! (§Y[This.Capital.GetName]§!)."
+ 
+ ET_ARMS_MARKET_TITLE: "Arms Market"
+ 
+ ET_ARMS_MARKET_OFFERS_TITLE: "Offers"
+ ET_ARMS_MARKET_OFFERS_TITLE_TT: "Countries can create offers that other countries can accept. This allows countries with very few equipment to receive equipment from countries that have enough."
+ ET_ARMS_MARKET_REQUESTS_TITLE: "Requests"
+ ET_ARMS_MARKET_REQUESTS_TITLE_TT: "Countries can create requests that other countries can accept. This allows countries with a lot of equipment to give it to anyone who needs it."
+ 
+ ET_ARMS_MARKET_CREATE_OFFER_BUTTON: "Create Offer"
+ ET_ARMS_MARKET_CREATE_OFFER_BUTTON_TT: "[This.GetArmsMarketCreateOfferButtonTooltip]"
+ 
+ ET_ARMS_MARKET_CREATE_REQUEST_BUTTON: "Create Request"
+ ET_ARMS_MARKET_CREATE_REQUEST_BUTTON_TT: "[This.GetArmsMarketCreateRequestButtonTooltip]"
+ 
+ ET_ARMS_MARKET_TAKE_OFFER_BUTTON_TT: "[This.GetArmsMarketTakeOfferButtonTooltip]"
+ ET_ARMS_MARKET_REMOVE_OFFER_BUTTON_TT: "[This.GetArmsMarketRemoveOfferButtonTooltip]"
+ 
+ ET_ARMS_MARKET_EQUIPMENT: "[This.GetArmsMarketEquipmentListName]"
+ 
+ ET_ARMS_MARKET_CREATE_OFFER_TITLE: "Create Offer"
+ ET_ARMS_MARKET_CREATE_OFFER_DESC: "Here you can select the §Yequipment type§! and the §Yamount§! you want to sell."
+ ET_ARMS_MARKET_CREATE_OFFER_SUBTRACT_AMOUNT_BUTTON_TT: "§GClick§! to subtract §Y1§!. \n§GCtrl + Click§! to subtract §Y10§!. \n§GShift + Click§! to subtract §Y100§!. \n§GAlt + Click§! to subtract §Y1000§!. \n§GCtrl + Shift + Click§! to set to §Y0§!."
+ ET_ARMS_MARKET_CREATE_OFFER_SUBTRACT_AMOUNT_BUTTON_TT_DELAYED: "[!subtract_button_click_enabled]"
+ ET_ARMS_MARKET_CREATE_OFFER_ADD_AMOUNT_BUTTON_TT: "§GClick§! to add §Y1§!. \n§GCtrl + Click§! to add §Y10§!. \n§GShift + Click§! to add §Y100§!. \n§GAlt + Click§! to add §Y1000§!. \n§GCtrl + Shift + Click§! to add §Y10000§!. \n§GCtrl + Alt + Shift + Click§! to add §Y100000§!."
+ ET_ARMS_MARKET_CREATE_OFFER_ADD_AMOUNT_BUTTON_TT_DELAYED: "[!add_button_click_enabled]"
+ ET_ARMS_MARKET_CREATE_OFFER_OPEN_EQUIPMENTS_MENU_BUTTON_TT: "§GClick§! to open the menu to select the §Yequipment type§!."
+ ET_ARMS_MARKET_CREATE_OFFER_CLOSE_EQUIPMENTS_MENU_BUTTON_TT: "§GClick§! to close the menu to select the §Yequipment type§!."
+ ET_ARMS_MARKET_CREATE_OFFER_SELECTED_EQUIPMENT: "§Y[This.GetArmsMarketCreateOfferSelectedEquipmentName]§!"
+ 
+ ET_ARMS_MARKET_TAKE_OFFER_TITLE: "Take Offer"
+ ET_ARMS_MARKET_TAKE_OFFER_DESC: "Here you can select the §Yamount§! of §Y[This.GetArmsMarketTakeOfferSelectedEquipmentName]§! you want to buy from §Y[?et_arms_market_seller.GetNameWithFlag]§!."
+ ET_ARMS_MARKET_TAKE_OFFER_SUBTRACT_AMOUNT_BUTTON_TT: "§GClick§! to subtract §Y1§!. \n§GCtrl + Click§! to subtract §Y10§!. \n§GShift + Click§! to subtract §Y100§!. \n§GAlt + Click§! to subtract §Y1000§!. \n§GCtrl + Shift + Click§! to set to §Y0§!."
+ ET_ARMS_MARKET_TAKE_OFFER_SUBTRACT_AMOUNT_BUTTON_TT_DELAYED: "[!subtract_button_click_enabled]"
+ ET_ARMS_MARKET_TAKE_OFFER_ADD_AMOUNT_BUTTON_TT: "§GClick§! to add §Y1§!. \n§GCtrl + Click§! to add §Y10§!. \n§GShift + Click§! to add §Y100§!. \n§GAlt + Click§! to add §Y1000§!. \n§GCtrl + Shift + Click§! to add §Y10000§!. \n§GCtrl + Alt + Shift + Click§! to add §Y100000§!."
+ ET_ARMS_MARKET_TAKE_OFFER_ADD_AMOUNT_BUTTON_TT_DELAYED: "[!add_button_click_enabled]"
+ ET_ARMS_MARKET_TAKE_OFFER_SELECTED_EQUIPMENT: "§Y[This.GetArmsMarketTakeOfferSelectedEquipmentName]§!"
+ 
+ ET_ARMS_MARKET_TAKE_REQUEST_BUTTON_TT: "[This.GetArmsMarketTakeRequestButtonTooltip]"
+ ET_ARMS_MARKET_REMOVE_REQUEST_BUTTON_TT: "[This.GetArmsMarketRemoveRequestButtonTooltip]"
+ 
+ ET_ARMS_MARKET_CREATE_REQUEST_TITLE: "Create Request"
+ ET_ARMS_MARKET_CREATE_REQUEST_DESC: "Here you can select the §Yequipment type§! and the §Yamount§! you want to buy."
+ ET_ARMS_MARKET_CREATE_REQUEST_SUBTRACT_AMOUNT_BUTTON_TT: "§GClick§! to subtract §Y1§!. \n§GCtrl + Click§! to subtract §Y10§!. \n§GShift + Click§! to subtract §Y100§!. \n§GAlt + Click§! to subtract §Y1000§!. \n§GCtrl + Shift + Click§! to set to §Y0§!."
+ ET_ARMS_MARKET_CREATE_REQUEST_SUBTRACT_AMOUNT_BUTTON_TT_DELAYED: "[!subtract_button_click_enabled]"
+ ET_ARMS_MARKET_CREATE_REQUEST_ADD_AMOUNT_BUTTON_TT: "§GClick§! to add §Y1§!. \n§GCtrl + Click§! to add §Y10§!. \n§GShift + Click§! to add §Y100§!. \n§GAlt + Click§! to add §Y1000§!. \n§GCtrl + Shift + Click§! to add §Y10000§!. \n§GCtrl + Alt + Shift + Click§! to add §Y100000§!."
+ ET_ARMS_MARKET_CREATE_REQUEST_ADD_AMOUNT_BUTTON_TT_DELAYED: "[!add_button_click_enabled]"
+ ET_ARMS_MARKET_CREATE_REQUEST_OPEN_EQUIPMENTS_MENU_BUTTON_TT: "§GClick§! to open the menu to select the §Yequipment type§!."
+ ET_ARMS_MARKET_CREATE_REQUEST_CLOSE_EQUIPMENTS_MENU_BUTTON_TT: "§GClick§! to close the menu to select the §Yequipment type§!."
+ ET_ARMS_MARKET_CREATE_REQUEST_SELECTED_EQUIPMENT: "§Y[This.GetArmsMarketCreateRequestSelectedEquipmentName]§!"
+ 
+ ET_ARMS_MARKET_TAKE_REQUEST_TITLE: "Take Request"
+ ET_ARMS_MARKET_TAKE_REQUEST_DESC: "Here you can select the §Yamount§! of §Y[This.GetArmsMarketTakeRequestSelectedEquipmentName]§! you want to sell to §Y[?et_arms_market_buyer.GetNameWithFlag]§!."
+ ET_ARMS_MARKET_TAKE_REQUEST_SUBTRACT_AMOUNT_BUTTON_TT: "§GClick§! to subtract §Y1§!. \n§GCtrl + Click§! to subtract §Y10§!. \n§GShift + Click§! to subtract §Y100§!. \n§GAlt + Click§! to subtract §Y1000§!. \n§GCtrl + Shift + Click§! to set to §Y0§!."
+ ET_ARMS_MARKET_TAKE_REQUEST_SUBTRACT_AMOUNT_BUTTON_TT_DELAYED: "[!subtract_button_click_enabled]"
+ ET_ARMS_MARKET_TAKE_REQUEST_ADD_AMOUNT_BUTTON_TT: "§GClick§! to add §Y1§!. \n§GCtrl + Click§! to add §Y10§!. \n§GShift + Click§! to add §Y100§!. \n§GAlt + Click§! to add §Y1000§!. \n§GCtrl + Shift + Click§! to add §Y10000§!. \n§GCtrl + Alt + Shift + Click§! to add §Y100000§!."
+ ET_ARMS_MARKET_TAKE_REQUEST_ADD_AMOUNT_BUTTON_TT_DELAYED: "[!add_button_click_enabled]"
+ ET_ARMS_MARKET_TAKE_REQUEST_SELECTED_EQUIPMENT: "§Y[This.GetArmsMarketTakeRequestSelectedEquipmentName]§!"
+ 
+ ET_ARMS_MARKET_EQUIPMENTS_ENTRY_BUTTON: "[This.GetArmsMarketEquipmentName]"
+ ET_ARMS_MARKET_EQUIPMENTS_ENTRY_BUTTON_TT: "§GClick§! to select §Y[This.GetArmsMarketEquipmentName]§! as the equipment of the offer."
+ ET_ARMS_MARKET_EQUIPMENTS_ENTRY_BUTTON_TT_DELAYED: "[!entry_button_click_enabled]"
+ 
+ ET_ARMS_MARKET_NO_OFFERS_INFO: "There are no offers in the Arms Market at the moment."
+ ET_ARMS_MARKET_NO_REQUESTS_INFO: "There are no requests in the Arms Market at the moment."
+ 
+ ET_ARMS_MARKET_OFFER_EQUIPMENT_ENTRY_TT: "[This.GetArmsMarketOfferEquipmentEntryTooltip]"
+ ET_ARMS_MARKET_REQUEST_EQUIPMENT_ENTRY_TT: "[This.GetArmsMarketRequestEquipmentEntryTooltip]"
+ 
+ ET_ARMS_MARKET_OFFER_ACCEPTED_POPUP_TITLE: "Arms Market Offer Accepted"
+ ET_ARMS_MARKET_OFFER_ACCEPTED_POPUP_DESC: "§Y[This.GetNameWithFlag]§! has accepted one of our offers in the §YArms Market§!. We have given them at least some of the offered equipment."
+ 
+ ET_ARMS_MARKET_REQUEST_ACCEPTED_POPUP_TITLE: "Arms Market Request Accepted"
+ ET_ARMS_MARKET_REQUEST_ACCEPTED_POPUP_DESC: "§Y[This.GetNameWithFlag]§! has accepted one of our request in the §YArms Market§! and has given us at least some of the requested equipment."
+ 
+ # Triggers:
+ ET_ARMS_MARKET_CREATE_OFFER_HAS_SELECTED_EQUIPMENT: "Has selected an §Yequipment type§!"
+ ET_ARMS_MARKET_VALUE_IS_HIGHER_THAN_0: "The value is higher than §Y0§!"
+ ET_ARMS_MARKET_VALUE_IS_LOWER_THAN_2M: "The value is smaller than §Y2,000,000§!"
+ 
+ ET_ARMS_MARKET_TAKE_OFFER_VALUE_IS_LOWER_THAN_MAX: "The value is smaller than §Y[?et_arms_market_amount_to_buy_max]§!"
+ ET_ARMS_MARKET_TAKE_REQUEST_VALUE_IS_LOWER_THAN_MAX: "The value is smaller than §Y[?et_arms_market_amount_to_sell_max]§!"
+ 
+ ET_ARMS_MARKET_NO_OFFER_FOR_THAT_EQUIPMENT_TYPE: "Does NOT offer §Y[This.GetArmsMarketEquipmentName]§! in the Arms Market"
+ ET_ARMS_MARKET_NO_REQUEST_FOR_THAT_EQUIPMENT_TYPE: "Does NOT request §Y[This.GetArmsMarketEquipmentName]§! in the Arms Market"
+ ET_ARMS_MARKET_HAS_AT_LEAST_AMOUNT_OF_EQUIPMENT: "More than §Y[?amount_to_check_for]§! of §Y[This.GetArmsMarketEquipmentNameOtherContext]§! stored in stockpile"
+ 
+ # Scripted Localisation:
+ string_et_arms_market_take_remove_offer_button_tt_invalid_we_already_interact_with_arms_market: "§RWe already interact with the Arms Market.§!"
+ string_et_arms_market_take_remove_offer_button_tt_invalid_someone_buys: "§RThis offer is currently taken by a country.§!"
+ string_et_arms_market_take_offer_button_tt_valid: "§GClick§! to take this offer. You can then adjust the amount of equipment you want to buy."
+ string_et_arms_market_remove_offer_button_tt_valid: "§GClick§! to remove this offer from the market."
+ string_et_arms_market_take_remove_offer_button_tt_invalid: "§RThere is no offer in this slot.§!"
+ string_et_arms_market_take_remove_request_button_tt_invalid_someone_buys: "§RThis request is currently taken by a country.§!"
+ string_et_arms_market_take_request_button_tt_valid: "§GClick§! to take this request. You can then adjust the amount of equipment you want to sell."
+ string_et_arms_market_remove_request_button_tt_valid: "§GClick§! to remove this request from the market."
+ string_et_arms_market_take_remove_request_button_tt_invalid: "§RThere is no request in this slot.§!"
+ string_et_arms_market_take_request_button_tt_invalid_not_enough_equipment: "§RWe do not have any§! §Y[This.GetArmsMarketEquipmentListName]§!§R.§!"
+ string_et_arms_market_create_offer_button_tt_invalid_no_major: "§RWe are not a major.§!"
+ 
+ string_et_arms_market_create_offer_button_tt: "§GClick§! to create an offer. You can then define the amount and what type of equipment you want to sell."
+ string_et_arms_market_create_request_button_tt: "§GClick§! to create a request. You can then define the amount and what type of equipment you want to buy."
+ 
+ string_et_arms_market_offer_equipment_entry_tt: "§Y[This.GetNameWithFlag]§! is currently offereing §Y[?v]§! [This.GetArmsMarketEquipmentListName] on the Arms Market."
+ string_et_arms_market_offer_equipment_entry_tt_invalid: "§Y[This.GetNameWithFlag]§! does not offer any §Y[This.GetArmsMarketEquipmentListName]§! at the moment."
+ string_et_arms_market_request_equipment_entry_tt: "§Y[This.GetNameWithFlag]§! is currently requesting §Y[?v]§! [This.GetArmsMarketEquipmentListName] from the Arms Market."
+ string_et_arms_market_request_equipment_entry_tt_invalid: "§Y[This.GetNameWithFlag]§! does not request any §Y[This.GetArmsMarketEquipmentListName]§! at the moment."
+ 
