@@ -2,12 +2,16 @@
  # GUIs:
  OPEN_ET_TRADE_WINDOW_INFO_WINDOW_TT: "§GClick§! to open the window with additional §YInformation§!."
  CLOSE_ET_TRADE_WINDOW_INFO_WINDOW_TT: "§GClick§! to close the window with additional §YInformation§!."
+ OPEN_ET_TRADE_WINDOW_INFO_SELECTED_COUNTRY_WINDOW_TT: "§GClick§! to open the window with additional §YInformation§! about §Y[This.GetNameWithFlag]§!. \n§GShift + Click§! to open multiple windows."
+ CLOSE_ET_TRADE_WINDOW_INFO_SELECTED_COUNTRY_WINDOW_TT: "§GClick§! to close all opened windows with additional §YInformation§!. \n§GShift + Click§! to only close the window with additional §YInformation§! about §Y[This.GetNameWithFlag]§!."
  
  ET_TRADE_WINDOW_INFO_WINDOW_TITLE: "Information"
+ ET_TRADE_WINDOW_INFO_WINDOW_SELECTED_COUNTRY_TT: "This window shows additional information about §Y[This.GetNameWithFlag]§!."
+ ET_TRADE_WINDOW_INFO_ENTRY_FLAG_TT: "§GClick§! to center the map on the capital state of §Y[This.GetNameWithFlag]§! (§Y[This.Capital.GetName]§!)."
  
  ET_TRADE_WINDOW_INFO_ENTRY_NAME: "[This.GetTradeWindowInfoEntryName]"
  ET_TRADE_WINDOW_INFO_ENTRY_VALUE: "[This.GetTradeWindowInfoEntryValue]"
- ET_TRADE_WINDOW_INFO_ENTRY_TT: "§Y[This.GetName]'s§! current §Y[This.GetTradeWindowInfoEntryName]§! is [This.GetTradeWindowInfoEntryValue]."
+ ET_TRADE_WINDOW_INFO_ENTRY_TT: "[This.GetFlag] §Y[This.GetName]'s§! current §Y[This.GetTradeWindowInfoEntryName]§! is [This.GetTradeWindowInfoEntryValue]."
  
  
  # Scripted Localisation:

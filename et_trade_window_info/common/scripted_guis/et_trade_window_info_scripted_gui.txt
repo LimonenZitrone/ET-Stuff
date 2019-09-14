@@ -1,3 +1,5 @@
+@TOTAL_NUM_OF_INFO_ENTRIES = 11
+
 scripted_gui = {
 	open_et_trade_window_info_window = {
 		context_type = player_context
@@ -11,19 +13,16 @@ scripted_gui = {
 		
 		effects = {
 			open_button_click = {
-				clear_array = et_trade_window_info_array
 				set_variable = { et_trade_window_info_window = 1 }
-				add_to_array = { et_trade_window_info_array = 1 }
-				add_to_array = { et_trade_window_info_array = 2 }
-				add_to_array = { et_trade_window_info_array = 3 }
-				add_to_array = { et_trade_window_info_array = 4 }
-				add_to_array = { et_trade_window_info_array = 5 }
-				add_to_array = { et_trade_window_info_array = 6 }
-				add_to_array = { et_trade_window_info_array = 7 }
-				add_to_array = { et_trade_window_info_array = 8 }
-				add_to_array = { et_trade_window_info_array = 9 }
-				add_to_array = { et_trade_window_info_array = 10 }
-				add_to_array = { et_trade_window_info_array = 11 }
+				clear_array = et_trade_window_info_array
+				for_loop_effect = {
+					start = 0
+					end = @TOTAL_NUM_OF_INFO_ENTRIES
+					value = j
+					set_temp_variable = { j_temp = j }
+					add_to_temp_variable = { j_temp = 1 }
+					add_to_array = { et_trade_window_info_array = j_temp }
+				}
 			}
 			close_button_click = {
 				clear_array = et_trade_window_info_array
@@ -63,6 +62,142 @@ scripted_gui = {
 			et_trade_window_info_gridbox = {
 				array = et_trade_window_info_array
 				entry_container = et_trade_window_info_entry
+			}
+		}
+	}
+	
+	open_et_trade_window_info_selected_country_window = {
+		context_type = selected_country_context
+		
+		window_name = "open_et_trade_window_info_selected_country_window"
+		parent_window_token = selected_country_view_info
+		
+		visible = {
+			ROOT = {
+				is_ai = no
+			}
+		}
+		
+		effects = {
+			open_button_click = {
+				ROOT = {
+					for_each_loop = {
+						array = et_trade_window_info_selected_country_list_array
+						clear_array = et_trade_window_info_selected_country_array
+					}
+					clear_array = et_trade_window_info_selected_country_list_array
+					add_to_array = { et_trade_window_info_selected_country_list_array = PREV.id }
+				}
+				clear_array = et_trade_window_info_selected_country_array
+				for_loop_effect = {
+					start = 0
+					end = @TOTAL_NUM_OF_INFO_ENTRIES
+					value = j
+					set_temp_variable = { j_temp = j }
+					add_to_temp_variable = { j_temp = 1 }
+					add_to_array = { et_trade_window_info_selected_country_array = j_temp }
+				}
+			}
+			open_button_shift_click = {
+				ROOT = {
+					add_to_array = { et_trade_window_info_selected_country_list_array = PREV.id }
+				}
+				clear_array = et_trade_window_info_selected_country_array
+				for_loop_effect = {
+					start = 0
+					end = @TOTAL_NUM_OF_INFO_ENTRIES
+					value = j
+					set_temp_variable = { j_temp = j }
+					add_to_temp_variable = { j_temp = 1 }
+					add_to_array = { et_trade_window_info_selected_country_array = j_temp }
+				}
+			}
+			close_button_click = {
+				ROOT = {
+					for_each_loop = {
+						array = et_trade_window_info_selected_country_list_array
+						clear_array = et_trade_window_info_selected_country_array
+					}
+					clear_array = et_trade_window_info_selected_country_list_array
+				}
+			}
+			close_button_shift_click = {
+				clear_array = et_trade_window_info_selected_country_array
+				ROOT = {
+					remove_from_array = { et_trade_window_info_selected_country_list_array = PREV.id }
+					if = {
+						limit = {
+							check_variable = { et_trade_window_info_selected_country_list_array^num < 1 }
+						}
+						clear_array = et_trade_window_info_selected_country_list_array
+					}
+				}
+			}
+		}
+		
+		triggers = {
+			open_button_visible = {
+				ROOT = {
+					NOT = { is_in_array = { et_trade_window_info_selected_country_list_array = PREV.id } }
+				}
+			}
+			close_button_visible = {
+				ROOT = {
+					is_in_array = { et_trade_window_info_selected_country_list_array = PREV.id }
+				}
+			}
+		}
+	}
+	
+	et_trade_window_info_selected_country_window = {
+		context_type = player_context
+		
+		window_name = "et_trade_window_info_selected_country_window"
+		
+		visible = {
+			is_ai = no
+			check_variable = { et_trade_window_info_selected_country_list_array^num > 0 }
+		}
+		
+		effects = {
+			close_button_click = {
+				var:v = {
+					clear_array = et_trade_window_info_selected_country_array
+					ROOT = {
+						remove_from_array = { et_trade_window_info_selected_country_list_array = PREV.id }
+						if = {
+							limit = {
+								check_variable = { et_trade_window_info_selected_country_list_array^num < 1 }
+							}
+							clear_array = et_trade_window_info_selected_country_list_array
+						}
+					}
+				}
+			}
+			entry_flag_click = {
+				capital_scope = {
+					ROOT = {
+						goto_state = PREV
+					}
+				}
+			}
+		}
+		
+		properties = {
+			entry_flag = {
+				image = "[This.GetFlag]"
+			}
+		}
+		
+		dynamic_lists = {
+			et_trade_window_info_selected_country_gridbox = {
+				array = et_trade_window_info_selected_country_list_array
+				entry_container = et_trade_window_info_selected_country_entry
+				change_scope = yes
+			}
+			et_trade_window_selected_country_info_gridbox = {
+				array = et_trade_window_info_selected_country_array
+				entry_container = et_trade_window_selected_country_info_entry
 			}
 		}
 	}
