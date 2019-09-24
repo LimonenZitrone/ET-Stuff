@@ -1,0 +1,75 @@
+guiTypes = {
+	containerWindowType = {
+		name = "action_demand_state_sender_gui"
+		position = { x = 0 y = 0 }	
+		size = { width = 574 height = 400 }
+		
+		instantTextBoxType = {
+			name = "desc"
+			position = { x = 335 y = 20 }
+			text = "ACTION_DEMAND_STATE_SEND_DESC"
+			font = "hoi_18mbs"
+			format = center
+			maxWidth = 220
+			maxHeight = 390
+			fixedsize = yes
+		}
+		
+		containerWindowType = {
+			name = "selectable_states_window"
+			position = { x = 20 y = 15 }	
+			size = { width = 310 height = 395 }
+			margin = { top = 15 bottom = 12 left = 0 right = 0 }
+			verticalScrollbar = "right_vertical_slider"
+			
+			background = {
+				name = "background"
+				spriteType = "GFX_tiled_paper_w_frame_one_border"
+			}
+		
+			gridboxtype = {
+				name = "selectable_states_gridbox"
+				position = { x = 18 y = 0 }
+				size = { width = 100% height = 100% }
+				slotsize = { width = 1 height = 1 }
+				add_horizontal = no
+				max_slots_horizontal = 1
+				format = "UPPER_LEFT"
+			}
+		}
+	}
+	
+	containerWindowType = {
+		name = "selectable_states_entry"
+		position = { x = 0 y = 0 }	
+		size = { width = 264 height = 34 }
+		
+		buttonType = {
+			name = "select_state_button"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_checkbox_button_264"
+			frame = 1
+			pdx_tooltip = "ACTION_DEMAND_STATE_STATE_NAME"
+			pdx_tooltip_delayed = "ACTION_DEMAND_STATE_SELECT_STATE_BUTTON_TT"
+		}
+		buttonType = {
+			name = "unselect_state_button"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_checkbox_button_264"
+			frame = 2
+			pdx_tooltip = "ACTION_DEMAND_STATE_STATE_NAME"
+			pdx_tooltip_delayed = "ACTION_DEMAND_STATE_UNSELECT_STATE_BUTTON_TT"
+		}
+		
+		instantTextBoxType = {
+			name = "name"
+			position = { x = 20 y = 7 }
+			text = "[This.GetName]"
+			font = "hoi_18mbs"
+			format = left
+			maxWidth = 200
+			multiline = no
+			alwaystransparent = yes
+		}
+	}
+}

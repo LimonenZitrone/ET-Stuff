@@ -1,0 +1,92 @@
+scripted_diplomatic_actions = {
+	action_demand_state = {
+		allowed = {
+			always = yes
+		}
+		visible = {
+			NOT = { has_war_with = ROOT }
+			any_owned_state = {
+				any_neighbor_state = {
+					is_owned_by = ROOT
+				}
+			}
+		}
+		selectable = {
+			ROOT = {
+				NOT = { has_variable = demanded_state }
+				NOT = { has_country_flag = sending_action_demand_state }
+			}
+		}
+
+		requires_acceptance = yes
+		show_acceptance_on_action_button = yes
+
+		icon = 13
+
+		on_sent_effect = {
+			ROOT = {
+				set_country_flag = { flag = sending_action_demand_state value = 1 days = 10 }
+			}
+		}
+
+		complete_effect = {
+			var:ROOT.demanded_state = {
+				ROOT = {
+					transfer_state = PREV
+				}
+			}
+			ROOT = {
+				clear_variable = demanded_state
+			}
+		}
+
+		reject_effect = {
+			ROOT = {
+				clear_variable = demanded_state
+			}
+		}
+
+		# SEND POPUP CUSTOMIZATION
+		send_scripted_gui = action_demand_state_sender_gui
+		reset_send_effect = {
+			ROOT = {
+				clear_variable = demanded_state
+				clear_array = selectable_states
+			}
+			every_owned_state = {
+				limit = {
+					any_neighbor_state = {
+						is_owned_by = ROOT
+					}
+				}
+				add_to_array = { ROOT.selectable_states = THIS.id }
+			}
+		}
+		can_be_sent = {
+			ROOT = {
+				has_variable = demanded_state
+			}
+		}
+		
+		# RECEIVE POPUP CUSTOMIZATION
+		receive_description = ACTION_DEMAND_STATE_RECEIVE_DESC
+		
+		# PLAYER FEEDBACK ON ACCEPT/REJECT
+		accept_title = ACTION_DEMAND_STATE_ACCEPT
+		accept_description = ACTION_DEMAND_STATE_ACCEPT_DESC
+		reject_title = ACTION_DEMAND_STATE_REJECT
+		reject_description = ACTION_DEMAND_STATE_REJECT_DESC
+	
+		# AI
+		# a list of ai_will_do entries that will be used to decide if AI should accept or reject a request
+		ai_acceptance = {
+			ai_reason_base = {
+				base = 10
+			}
+		}
+
+		ai_desire = {
+			base = 0
+		}
+	}
+}

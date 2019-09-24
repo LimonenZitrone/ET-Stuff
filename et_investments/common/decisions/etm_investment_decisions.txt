@@ -50,6 +50,12 @@ etm_investment_category = {
 						BUILDING = "[This.GetInvestmentTypeNameOtherContext]"
 					}
 				}
+				controller = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = etm_successful_investment_opinion
+					}
+				}
 			}
 			hidden_effect = {
 				clear_variable = selected_investment_type_1
@@ -122,6 +128,12 @@ etm_investment_category = {
 							}
 						}
 						BUILDING = "[This.GetInvestmentTypeNameOtherContext]"
+					}
+				}
+				controller = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = etm_successful_investment_opinion
 					}
 				}
 			}
@@ -198,6 +210,12 @@ etm_investment_category = {
 						BUILDING = "[This.GetInvestmentTypeNameOtherContext]"
 					}
 				}
+				controller = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = etm_successful_investment_opinion
+					}
+				}
 			}
 			hidden_effect = {
 				clear_variable = selected_investment_type_3
@@ -272,6 +290,12 @@ etm_investment_category = {
 						BUILDING = "[This.GetInvestmentTypeNameOtherContext]"
 					}
 				}
+				controller = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = etm_successful_investment_opinion
+					}
+				}
 			}
 			hidden_effect = {
 				clear_variable = selected_investment_type_4
@@ -344,6 +368,12 @@ etm_investment_category = {
 							}
 						}
 						BUILDING = "[This.GetInvestmentTypeNameOtherContext]"
+					}
+				}
+				controller = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = etm_successful_investment_opinion
 					}
 				}
 			}

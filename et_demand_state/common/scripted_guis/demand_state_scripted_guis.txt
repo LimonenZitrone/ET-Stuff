@@ -1,0 +1,47 @@
+scripted_gui = {
+	action_demand_state_sender_gui = {
+		context_type = diplomatic_action
+
+		window_name = "action_demand_state_sender_gui"
+		
+		effects = {
+			select_state_button_click = {
+				ROOT = {
+					set_variable = { demanded_state = PREV.id }
+				}
+			}
+			unselect_state_button_click = {
+				ROOT = {
+					clear_variable = demanded_state
+				}
+			}
+			select_state_button_right_click = {
+				ROOT = {
+					goto_state = PREV
+				}
+			}
+			unselect_state_button_right_click = {
+				ROOT = {
+					goto_state = PREV
+				}
+			}
+		}
+		
+		triggers = {
+			select_state_button_visible = {
+				NOT = { check_variable = { ROOT.demanded_state = THIS.id } }
+			}
+			unselect_state_button_visible = {
+				check_variable = { ROOT.demanded_state = THIS.id }
+			}
+		}
+		
+		dynamic_lists = {
+			selectable_states_gridbox = {
+				array = ROOT.selectable_states
+				entry_container = selectable_states_entry
+				change_scope = yes
+			}
+		}
+	}
+}

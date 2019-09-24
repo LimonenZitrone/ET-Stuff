@@ -1,0 +1,11 @@
+﻿l_english:
+ # GUIs & Diplo Actions:
+ ACTION_DEMAND_STATE_TITLE: "Demand State"
+ ACTION_DEMAND_STATE_ACTION_DESC: "Demand a neighboring state. \n\nWe can send this action every §Y10§! days, given the country we send it to reacts in this time."
+ ACTION_DEMAND_STATE_SEND_DESC: "Demand a neighboring state from §Y[This.GetNameWithFlag]§!. \nYou can see whether the other country may accept in the diplomacy tab, however that display will only update on daily tick, when switching between details and diplomacy tab or when sending the action."
+ ACTION_DEMAND_STATE_RECEIVE_DESC: "§Y[Root.GetNameWithFlag]§! demands that we transfer ownership and control over §Y[?Root.demanded_state.GetName]§! to them."
+ ACTION_DEMAND_STATE_ACCEPT: "[This.GetNameDefCap] accepted our offer"
+ ACTION_DEMAND_STATE_ACCEPT_DESC: "§Y[This.GetNameWithFlag]§! accepted to cede §Y[?Root.demanded_state.GetName]§! to us."
+ ACTION_DEMAND_STATE_REJECT: "[This.GetNameDefCap] rejected our offer"
+ ACTION_DEMAND_STATE_REJECT_DESC: "§Y[This.GetNameWithFlag]§! rejected to cede §Y[?Root.demanded_state.GetName]§! to us."
+ 

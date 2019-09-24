@@ -1,7 +1,7 @@
 ﻿l_english:
  # Scrited Diplomatic Actions & GUI:
  ETM_INVEST_IN_TARGET_ACTION_TITLE: "Investments"
- ETM_INVEST_IN_TARGET_ACTION_ACTION_DESC: "Invest in one of their states by funding a building construction. \nThis will create a building construction of a specific building in one of their states and increase our trade influence with them by §G+10§!. \n\nIf this action is not available, you may have reached your current maximum amount of investments."
+ ETM_INVEST_IN_TARGET_ACTION_ACTION_DESC: "Invest in one of their states by funding a building construction. \nThis will create a building construction of a specific building in one of their states and increase our trade influence with them by §G+10§!. \n\nIf this action is not available, you may have reached your current maximum amount of investments, you may be at war or you or the target are justifying a war goal on the other."
  ETM_INVEST_IN_TARGET_ACTION_ACCEPT_TITLE: "Foreign Investment"
  ETM_INVEST_IN_TARGET_ACTION_ACCEPT_DESC: "§Y[Root.GetNameWithFlag]§! has decided to invest in our country. They started a construction of a building in one of our states. The construction will be completed in §Y100§! days, if they don't cancel it."
  
@@ -34,4 +34,5 @@
  
  # Opinion Modifiers:
  etm_investment_trade_opinion: "Foreign Investment"
+ etm_successful_investment_opinion: "Foreign Investment"
  
