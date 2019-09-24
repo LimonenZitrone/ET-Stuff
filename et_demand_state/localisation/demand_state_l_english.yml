@@ -1,11 +1,21 @@
 ﻿l_english:
  # GUIs & Diplo Actions:
  ACTION_DEMAND_STATE_TITLE: "Demand State"
- ACTION_DEMAND_STATE_ACTION_DESC: "Demand a neighboring state. \n\nWe can send this action every §Y10§! days, given the country we send it to reacts in this time."
+ ACTION_DEMAND_STATE_ACTION_DESC: "Demand a neighboring state. \n\nWe can send this action every §Y31§! days, if not accepted or declined within that time."
  ACTION_DEMAND_STATE_SEND_DESC: "Demand a neighboring state from §Y[This.GetNameWithFlag]§!. \nYou can see whether the other country may accept in the diplomacy tab, however that display will only update on daily tick, when switching between details and diplomacy tab or when sending the action."
  ACTION_DEMAND_STATE_RECEIVE_DESC: "§Y[Root.GetNameWithFlag]§! demands that we transfer ownership and control over §Y[?Root.demanded_state.GetName]§! to them."
  ACTION_DEMAND_STATE_ACCEPT: "[This.GetNameDefCap] accepted our offer"
  ACTION_DEMAND_STATE_ACCEPT_DESC: "§Y[This.GetNameWithFlag]§! accepted to cede §Y[?Root.demanded_state.GetName]§! to us."
  ACTION_DEMAND_STATE_REJECT: "[This.GetNameDefCap] rejected our offer"
  ACTION_DEMAND_STATE_REJECT_DESC: "§Y[This.GetNameWithFlag]§! rejected to cede §Y[?Root.demanded_state.GetName]§! to us."
+ 
+ # AI Reasons:
+ ai_reason_opinion: "Their opinion of us"
+ ai_reason_major: "We are a major and they are not"
+ ai_reason_military_strength_compared: "Our Military Strength compared to theirs"
+ ai_reason_army_factories_compared: "Our amount of Military Factories compared to theirs"
+ ai_reason_gdp_compared: "Our GDP per Capita compared to theirs"
+ ai_reason_core_in_selected_state: "The selected state is a core of us"
+ ai_reason_buildings_in_selected_state: "Amount of buildings in the selected state"
+ ai_reason_resources_in_selected_state: "Amount of resources in the selected state"
  

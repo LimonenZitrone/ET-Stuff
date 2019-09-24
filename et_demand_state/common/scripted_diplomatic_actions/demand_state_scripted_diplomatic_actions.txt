@@ -13,7 +13,7 @@ scripted_diplomatic_actions = {
 		}
 		selectable = {
 			ROOT = {
-				NOT = { has_variable = demanded_state }
+			#	NOT = { has_variable = demanded_state }
 				NOT = { has_country_flag = sending_action_demand_state }
 			}
 		}
@@ -25,7 +25,7 @@ scripted_diplomatic_actions = {
 
 		on_sent_effect = {
 			ROOT = {
-				set_country_flag = { flag = sending_action_demand_state value = 1 days = 10 }
+				set_country_flag = { flag = sending_action_demand_state value = 1 days = 31 }
 			}
 		}
 
@@ -37,12 +37,14 @@ scripted_diplomatic_actions = {
 			}
 			ROOT = {
 				clear_variable = demanded_state
+				clr_country_flag = sending_action_demand_state
 			}
 		}
 
 		reject_effect = {
 			ROOT = {
 				clear_variable = demanded_state
+				clr_country_flag = sending_action_demand_state
 			}
 		}
 
@@ -80,8 +82,1571 @@ scripted_diplomatic_actions = {
 		# AI
 		# a list of ai_will_do entries that will be used to decide if AI should accept or reject a request
 		ai_acceptance = {
-			ai_reason_base = {
-				base = 10
+			ai_reason_opinion = {
+				base = 0
+				modifier = {
+					add = their_opinion
+					set_temp_variable = { their_opinion = opinion@ROOT }
+					divide_temp_variable = { their_opinion = 4 }
+				}
+			}
+			ai_reason_major = {
+				base = 0
+				modifier = {
+					add = 15
+					is_major = no
+					ROOT = {
+						is_major = yes
+					}
+				}
+			}
+			ai_reason_military_strength_compared = {
+				base = 0
+				modifier = {
+					add = -15
+					strength_ratio = {
+						tag = ROOT
+						ratio > 1
+					}
+				}
+				modifier = {
+					add = 10
+					strength_ratio = {
+						tag = ROOT
+						ratio < 1
+					}
+				}
+			}
+			ai_reason_army_factories_compared = {
+				base = 0
+				modifier = {
+					add = -20
+					num_of_military_factories > ROOT
+				}
+				modifier = {
+					add = 10
+					ROOT = {
+						num_of_military_factories > PREV
+					}
+				}
+			}
+			ai_reason_gdp_compared = {
+				base = 0
+				modifier = {
+					add = -15
+					check_variable = { num_gdp_capita_gui > ROOT.num_gdp_capita_gui }
+				}
+				modifier = {
+					add = 15
+					check_variable = { ROOT.num_gdp_capita_gui > num_gdp_capita_gui }
+				}
+			}
+			ai_reason_core_in_selected_state = {
+				base = 0
+				modifier = {
+					add = 5
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							is_core_of = ROOT
+							owner = {
+								PREV = {
+									NOT = { is_core_of = PREV }
+								}
+							}
+						}
+					}
+				}
+			}
+			ai_reason_buildings_in_selected_state = {
+				base = 0
+				modifier = {
+					add = buildings_in_selected_state
+					ROOT = {
+						has_variable = demanded_state
+						set_temp_variable = { buildings_in_selected_state = 0 }
+						var:demanded_state = {
+							add_to_temp_variable = { buildings_in_selected_state = building_level@infrastructure }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@arms_factory }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@Urban_Center }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@industrial_complex }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@air_base }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@dockyard }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@anti_air_building }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@synthetic_refinery }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@fuel_silo }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@radar_station }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@rocket_site }
+							add_to_temp_variable = { buildings_in_selected_state = building_level@nuclear_reactor }
+							if = {
+								limit = {
+									OR = {
+										has_state_category = city
+										has_state_category = large_city
+										has_state_category = megalopolis
+										has_state_category = metropolis
+										has_state_category = city
+										has_state_category = city
+									}
+								}
+								multiply_temp_variable = { buildings_in_selected_state = -2 }
+							}
+							else = {
+								divide_temp_variable = { buildings_in_selected_state = -2 }
+							}
+						}
+					}
+				}
+			}
+			ai_reason_resources_in_selected_state = {
+				base = 0
+				# Oil
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 10
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 20
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 30
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 40
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 50
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 60
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 70
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 80
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 90
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 100
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 110
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 120
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 130
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 140
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 150
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 160
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 170
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 180
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 190
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -25
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = oil
+								amount > 200
+							}
+						}
+					}
+				}
+				# Aluminium
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 10
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 20
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 30
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 40
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 50
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 60
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 70
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 80
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 90
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 100
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 110
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 120
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 130
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 140
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 150
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 160
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 170
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 180
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 190
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -25
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = aluminium
+								amount > 200
+							}
+						}
+					}
+				}
+				# Rubber
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 10
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 20
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 30
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 40
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 50
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 60
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 70
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 80
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 90
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 100
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 110
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 120
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 130
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 140
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 150
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 160
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 170
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 180
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 190
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -25
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = rubber
+								amount > 200
+							}
+						}
+					}
+				}
+				# Tungsten
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 10
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 20
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 30
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 40
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 50
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 60
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 70
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 80
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 90
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 100
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 110
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 120
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 130
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 140
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 150
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 160
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 170
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 180
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 190
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -25
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = tungsten
+								amount > 200
+							}
+						}
+					}
+				}
+				# Steel
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 10
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 20
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 30
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 40
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 50
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 60
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 70
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 80
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 90
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 100
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 110
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 120
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 130
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 140
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 150
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 160
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 170
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 180
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 190
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -25
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = steel
+								amount > 200
+							}
+						}
+					}
+				}
+				# Chromium
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 10
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 20
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 30
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 40
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 50
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 60
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 70
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 80
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 90
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 100
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 110
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 120
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 130
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 140
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 150
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 160
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 170
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 180
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -1
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 190
+							}
+						}
+					}
+				}
+				modifier = {
+					add = -25
+					ROOT = {
+						has_variable = demanded_state
+						var:demanded_state = {
+							has_resources_amount = {
+								resource = chromium
+								amount > 200
+							}
+						}
+					}
+				}
+				
 			}
 		}
 
