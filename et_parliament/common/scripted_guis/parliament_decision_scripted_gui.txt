@@ -1,0 +1,27 @@
+scripted_gui = {
+	parliament_decision_scripted_gui = {
+		context_type = decision_category
+		
+		window_name = "parliament_decision_scripted_gui"
+		
+		properties = {
+			entry_icon = {
+				frame = v
+			}
+			progressbar_green = {
+				x = parliament_seats_green_percentage_position
+			}
+		}
+		
+		dynamic_lists = {
+			parliament_decision_scripted_gui_yes_no_gridbox = {
+				array = parliament_seats_yes_no_array
+				entry_container = parliament_decision_scripted_gui_yes_no_entry
+			}
+			parliament_decision_scripted_gui_party_gridbox = {
+				array = parliament_seats_party_array
+				entry_container = parliament_decision_scripted_gui_party_entry
+			}
+		}
+	}
+}

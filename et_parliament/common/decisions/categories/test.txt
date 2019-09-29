@@ -1,0 +1,3 @@
+test_category = {
+	scripted_gui = parliament_decision_scripted_gui
+}

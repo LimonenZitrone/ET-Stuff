@@ -1,0 +1,178 @@
+guiTypes = {
+	containerWindowType = {
+		name = "parliament_decision_scripted_gui"
+		position = { x = 0 y = 0 }
+		size = { width = 500 height = 330 }
+		
+		containerWindowType = {
+			name = "text_window"
+			position = { x = 100 y = 10 }
+			size = { width = 302 height = 35 }
+			
+			background = {
+				name = "background"
+				spriteType = "GFX_tiled_generic_bg_1"
+			}
+			
+			instantTextBoxType = {
+				name = "num_of_seats_text"
+				position = { x = 10 y = 8 }
+				font = "hoi_18mbs"
+				text = "PARLIAMENT_NUM_OF_SEATS"
+				format = center
+				maxWidth = 280
+				multiline = no
+			}
+		}
+		
+		containerWindowType = {
+			name = "yes_no_entries"
+			position = { x = 10 y = 50 }
+			size = { width = 234 height = 210 }
+			margin = { left = 10 right = 10 top = 10 bottom = 10 }
+			verticalScrollbar = "right_vertical_sliderno_bg"
+			
+			background = {
+				name = "background"
+				spriteType = "GFX_tiled_decisions_bg_small"
+			}
+			
+			gridboxtype = {
+				name = "parliament_decision_scripted_gui_yes_no_gridbox"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 25 height = 25 }
+				add_horizontal = yes
+				max_slots_horizontal = 8
+				format = "UPPER_LEFT"
+			}
+		}
+		
+		containerWindowType = {
+			name = "yes_no_progressbar"
+			position = { x = 10 y = 265 }
+			size = { width = 234 height = 30 }
+			
+			background = {
+				name = "background"
+				spriteType = "GFX_parliament_progressbar_frame"
+			}
+			
+			iconType = {
+				name = "progressbar_red"
+				spriteType = "GFX_parliament_progressbar_color_strip_yes_no"
+				frame = 2
+				position = { x = 2 y = 2 }
+			}
+			
+			iconType = {
+				name = "progressbar_green"
+				spriteType = "GFX_parliament_progressbar_color_strip_yes_no"
+				frame = 1
+				position = { x = 2 y = 2 }
+			}
+			
+			iconType = {
+				name = "overlay"
+				spriteType = "GFX_parliament_progressbar_frame"
+				position = { x = 0 y = 0 }
+				pdx_tooltip = "PARLIAMENT_YES_NO_VOTES_PROGRESSBAR_TT"
+			}
+		}
+		
+		containerWindowType = {
+			name = "yes_no_progress_text_window"
+			position = { x = 10 y = 298 }
+			size = { width = 234 height = 30 }
+			
+			background = {
+				name = "background"
+				spriteType = "GFX_tiled_generic_bg_1"
+			}
+			
+			instantTextBoxType = {
+				name = "num_of_seats_text"
+				position = { x = 5 y = 7 }
+				font = "hoi_16mbs"
+				text = "PARLIAMENT_YES_NO_VOTES_PROGRESSBAR_TEXT"
+				format = center
+				maxWidth = 220
+				multiline = no
+				pdx_tooltip = "PARLIAMENT_YES_NO_VOTES_PROGRESSBAR_TT"
+			}
+		}
+		
+		containerWindowType = {
+			name = "party_entries"
+			position = { x = 264 y = 50 }
+			size = { width = 234 height = 150 }
+			margin = { left = 10 right = 10 top = 10 bottom = 10 }
+			verticalScrollbar = "right_vertical_sliderno_bg"
+			
+			background = {
+				name = "background"
+				spriteType = "GFX_tiled_decisions_bg_small"
+			}
+			
+			gridboxtype = {
+				name = "parliament_decision_scripted_gui_party_gridbox"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 25 height = 25 }
+				add_horizontal = yes
+				max_slots_horizontal = 8
+				format = "UPPER_LEFT"
+			}
+		}
+		
+		containerWindowType = {
+			name = "party_text_window"
+			position = { x = 264 y = 202 }
+			size = { width = 234 height = 128 }
+			
+			background = {
+				name = "background"
+				spriteType = "GFX_mini_tooltip"
+			}
+			
+			instantTextBoxType = {
+				name = "party_text"
+				position = { x = 10 y = 8 }
+				font = "hoi_16mbs"
+				text = "PARLIAMENT_PARTY_TEXT"
+				format = left
+				maxWidth = 210
+				maxHeight = 120
+				fixedsize = yes
+			}
+		}
+	}
+	
+	containerWindowType = {
+		name = "parliament_decision_scripted_gui_yes_no_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 20 height = 20 }
+		
+		iconType = {
+			name = "entry_icon"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_parliament_seat_color_icon_strip_yes_no"
+			frame = 1
+			pdx_tooltip = "PARLIAMENT_SEAT_YES_NO_TT"
+		}
+	}
+	
+	containerWindowType = {
+		name = "parliament_decision_scripted_gui_party_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 20 height = 20 }
+		
+		iconType = {
+			name = "entry_icon"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_parliament_seat_color_icon_strip_party"
+			frame = 1
+			pdx_tooltip = "PARLIAMENT_SEAT_PARTY_TT"
+		}
+	}
+}

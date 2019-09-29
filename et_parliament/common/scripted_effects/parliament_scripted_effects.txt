@@ -1,0 +1,164 @@
+resize_parliament_to_900_seats_if_it_has_more = {
+	if = {
+		limit = {
+			check_variable = { parliament_seats_yes_no_array^num > 900 }
+		}
+		resize_array = { parliament_seats_yes_no_array = 900 }
+	}
+	if = {
+		limit = {
+			check_variable = { parliament_seats_party_array^num > 900 }
+		}
+		resize_array = { parliament_seats_party_array = 900 }
+	}	
+}
+
+set_parliament_percentages = {
+	set_parliament_yes_no_percentages = yes
+	set_parliament_party_percentages = yes
+}
+
+set_parliament_yes_no_percentages = {
+	set_variable = { parliament_seats_yes_percentage = 0 }
+	set_variable = { parliament_seats_no_percentage = 0 }
+	for_each_loop = {
+		array = parliament_seats_yes_no_array
+		value = v
+		if = {
+			limit = {
+				check_variable = { v = 1 }
+			}
+			add_to_variable = { parliament_seats_yes_percentage = 1 }
+		}
+		else = {
+			add_to_variable = { parliament_seats_no_percentage = 1 }
+		}
+	}
+	divide_variable = { parliament_seats_yes_percentage = parliament_seats_yes_no_array^num }
+	multiply_variable = { parliament_seats_yes_percentage = 100 }
+	divide_variable = { parliament_seats_no_percentage = parliament_seats_yes_no_array^num }
+	multiply_variable = { parliament_seats_no_percentage = 100 }
+	set_variable = { parliament_seats_green_percentage_position = parliament_seats_yes_percentage }
+	divide_variable = { parliament_seats_green_percentage_position = 100 }
+	multiply_variable = { parliament_seats_green_percentage_position = 230 }
+	subtract_from_variable = { parliament_seats_green_percentage_position = 228 }
+}
+
+set_parliament_party_percentages = {
+	set_variable = { parliament_seats_party_1_percentage = 0 }
+	set_variable = { parliament_seats_party_2_percentage = 0 }
+	set_variable = { parliament_seats_party_3_percentage = 0 }
+	set_variable = { parliament_seats_party_4_percentage = 0 }
+	set_variable = { parliament_seats_party_5_percentage = 0 }
+	set_variable = { parliament_seats_party_6_percentage = 0 }
+	set_variable = { parliament_seats_party_7_percentage = 0 }
+	for_each_loop = {
+		array = parliament_seats_party_array
+		value = v
+		if = {
+			limit = {
+				check_variable = { v = 1 }
+			}
+			add_to_variable = { parliament_seats_party_1_percentage = 1 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { v = 2 }
+			}
+			add_to_variable = { parliament_seats_party_2_percentage = 1 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { v = 3 }
+			}
+			add_to_variable = { parliament_seats_party_3_percentage = 1 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { v = 4 }
+			}
+			add_to_variable = { parliament_seats_party_4_percentage = 1 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { v = 5 }
+			}
+			add_to_variable = { parliament_seats_party_5_percentage = 1 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { v = 6 }
+			}
+			add_to_variable = { parliament_seats_party_6_percentage = 1 }
+		}
+		else_if = {
+			limit = {
+				check_variable = { v = 7 }
+			}
+			add_to_variable = { parliament_seats_party_7_percentage = 1 }
+		}
+	}
+	divide_variable = { parliament_seats_party_1_percentage = parliament_seats_yes_no_array^num }
+	multiply_variable = { parliament_seats_party_1_percentage = 100 }
+	divide_variable = { parliament_seats_party_2_percentage = parliament_seats_yes_no_array^num }
+	multiply_variable = { parliament_seats_party_2_percentage = 100 }
+	divide_variable = { parliament_seats_party_3_percentage = parliament_seats_yes_no_array^num }
+	multiply_variable = { parliament_seats_party_3_percentage = 100 }
+	divide_variable = { parliament_seats_party_4_percentage = parliament_seats_yes_no_array^num }
+	multiply_variable = { parliament_seats_party_4_percentage = 100 }
+	divide_variable = { parliament_seats_party_5_percentage = parliament_seats_yes_no_array^num }
+	multiply_variable = { parliament_seats_party_5_percentage = 100 }
+	divide_variable = { parliament_seats_party_6_percentage = parliament_seats_yes_no_array^num }
+	multiply_variable = { parliament_seats_party_6_percentage = 100 }
+	divide_variable = { parliament_seats_party_7_percentage = parliament_seats_yes_no_array^num }
+	multiply_variable = { parliament_seats_party_7_percentage = 100 }
+}
+
+sort_parliament_arrays = {
+	sort_parliament_yes_no_array = yes
+	sort_parliament_party_array = yes
+}
+
+sort_parliament_yes_no_array = {
+	for_loop_effect = {
+		start = 1
+		end = parliament_seats_yes_no_array^num
+		value = j
+		set_temp_variable = { var = j_minus value = j }
+		subtract_from_temp_variable = { var = j_minus value = 1 }
+		while_loop_effect = {
+			limit = {
+				check_variable = { j > 0 }
+				check_variable = { parliament_seats_yes_no_array^j_minus > parliament_seats_yes_no_array^j }
+			}
+			# swap j-1 with j if value of j-1 > j
+			set_temp_variable = { var = temp value = parliament_seats_yes_no_array^j }
+			set_variable = { var = parliament_seats_yes_no_array^j value = parliament_seats_yes_no_array^j_minus }
+			set_variable = { var = parliament_seats_yes_no_array^j_minus value = temp }
+			subtract_from_temp_variable = { var = j value = 1 }
+			subtract_from_temp_variable = { var = j_minus value = 1 }
+		}
+	}
+}
+
+sort_parliament_party_array = {
+	for_loop_effect = {
+		start = 1
+		end = parliament_seats_party_array^num
+		value = j
+		set_temp_variable = { var = j_minus value = j }
+		subtract_from_temp_variable = { var = j_minus value = 1 }
+		while_loop_effect = {
+			limit = {
+				check_variable = { j > 0 }
+				check_variable = { parliament_seats_party_array^j_minus > parliament_seats_party_array^j }
+			}
+			# swap j-1 with j if value of j-1 > j
+			set_temp_variable = { var = temp value = parliament_seats_party_array^j }
+			set_variable = { var = parliament_seats_party_array^j value = parliament_seats_party_array^j_minus }
+			set_variable = { var = parliament_seats_party_array^j_minus value = temp }
+			subtract_from_temp_variable = { var = j value = 1 }
+			subtract_from_temp_variable = { var = j_minus value = 1 }
+		}
+	}
+}

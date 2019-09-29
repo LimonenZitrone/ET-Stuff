@@ -1,0 +1,114 @@
+defined_text = {
+	name = GetParliamentSeatYesNo
+	
+	text = {
+		trigger = {
+			check_variable = { v = 1 }
+		}
+		localization_key = string_parliament_seat_yes
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = string_parliament_seat_no
+	}
+}
+
+defined_text = {
+	name = GetParliamentSeatParty
+	
+	text = {
+		trigger = {
+			check_variable = { v = 1 }
+		}
+		localization_key = democratic_noun
+	}
+	text = {
+		trigger = {
+			check_variable = { v = 2 }
+		}
+		localization_key = communism_noun
+	}
+	text = {
+		trigger = {
+			check_variable = { v = 3 }
+		}
+		localization_key = fascism_noun
+	}
+	text = {
+		trigger = {
+			check_variable = { v = 4 }
+		}
+		localization_key = neutrality_noun
+	}
+	text = {
+		trigger = {
+			check_variable = { v = 5 }
+		}
+		localization_key = islamic_noun
+	}
+	text = {
+		trigger = {
+			check_variable = { v = 6 }
+		}
+		localization_key = anarchism_noun
+	}
+	text = {
+		trigger = {
+			check_variable = { v = 7 }
+		}
+		localization_key = monarchist_noun
+	}
+	
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = "???"
+	}
+}
+
+defined_text = {
+	name = GetParliamentNumOfYesVotes
+	
+	text = {
+		trigger = {
+			set_temp_variable = { parliament_num_of_yes_votes_temp = 0 }
+			all_of = {
+				array = parliament_seats_yes_no_array
+				value = v
+				if = {
+					limit = {
+						check_variable = { v = 1 }
+					}
+					add_to_temp_variable = { parliament_num_of_yes_votes_temp = 1 }
+				}
+			}
+			always = yes
+		}
+		localization_key = string_parliament_num_of_yes_votes
+	}
+}
+
+defined_text = {
+	name = GetParliamentNumOfNoVotes
+	
+	text = {
+		trigger = {
+			set_temp_variable = { parliament_num_of_no_votes_temp = 0 }
+			all_of = {
+				array = parliament_seats_yes_no_array
+				value = v
+				if = {
+					limit = {
+						NOT = { check_variable = { v = 1 } }
+					}
+					add_to_temp_variable = { parliament_num_of_no_votes_temp = 1 }
+				}
+			}
+			always = yes
+		}
+		localization_key = string_parliament_num_of_no_votes
+	}
+}

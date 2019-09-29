@@ -1,0 +1,21 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_parliament_progressbar_frame"
+		textureFile = "gfx/interface/parliament_progressbar_frame.dds"
+	}
+	spriteType = {
+		name = "GFX_parliament_seat_color_icon_strip_yes_no"
+		textureFile = "gfx/interface/parliament_seat_color_icon_strip_yes_no.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_parliament_progressbar_color_strip_yes_no"
+		textureFile = "gfx/interface/parliament_progressbar_color_strip_yes_no.dds"
+		noOfFrames = 2
+	}
+	spriteType = {
+		name = "GFX_parliament_seat_color_icon_strip_party"
+		textureFile = "gfx/interface/parliament_seat_color_icon_strip_party.dds"
+		noOfFrames = 7
+	}
+}

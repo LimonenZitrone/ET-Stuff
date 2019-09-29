@@ -1,0 +1,19 @@
+﻿l_english:
+ # GUIs:
+ PARLIAMENT_NUM_OF_SEATS: "Parliament Size: §Y[?parliament_seats_yes_no_array^num]§!"
+ 
+ PARLIAMENT_SEAT_YES_NO_TT: "This seat currently has the following attitude: [This.GetParliamentSeatYesNo]."
+ PARLIAMENT_SEAT_PARTY_TT: "This seat currently belongs to the following ideology: §Y[This.GetParliamentSeatParty]§!."
+ 
+ PARLIAMENT_YES_NO_VOTES_PROGRESSBAR_TEXT: "§G[?parliament_seats_yes_percentage|0]%§! Support / §R[?parliament_seats_no_percentage|0]%§! Opposition"
+ PARLIAMENT_YES_NO_VOTES_PROGRESSBAR_TT: "Of the §Y[?parliament_seats_yes_no_array^num]§! seats in the parliament, [This.GetParliamentNumOfYesVotes] (§Y[?parliament_seats_yes_percentage|2]%§!) are supporting and [This.GetParliamentNumOfNoVotes] (§Y[?parliament_seats_no_percentage|2]%§!) are opposing us."
+ 
+ PARLIAMENT_PARTY_TEXT: "Liberalism: §Y[?parliament_seats_party_1_percentage|2]%§! \nMarxism: §Y[?parliament_seats_party_2_percentage|2]%§! \nFascist: §Y[?parliament_seats_party_3_percentage|2]%§! \nNon-Aligned: §Y[?parliament_seats_party_4_percentage|2]%§! \nIslamic: §Y[?parliament_seats_party_5_percentage|2]%§! \nAnarchist: §Y[?parliament_seats_party_6_percentage|2]%§! \nMonarchist: §Y[?parliament_seats_party_7_percentage|2]%§!"
+ 
+ # Scripted Localisation:
+ string_parliament_seat_yes: "§GSupport§!"
+ string_parliament_seat_no: "§ROpposition§!"
+ 
+ string_parliament_num_of_yes_votes: "§G[?parliament_num_of_yes_votes_temp]§!"
+ string_parliament_num_of_no_votes: "§R[?parliament_num_of_no_votes_temp]§!"
+ 

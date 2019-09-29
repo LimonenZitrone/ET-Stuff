@@ -1,0 +1,5 @@
+test_category = {
+	test_decision = {
+		visible = { always = yes }
+	}
+}
