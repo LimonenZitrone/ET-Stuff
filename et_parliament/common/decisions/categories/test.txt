@@ -1,3 +1,7 @@
 test_category = {
+	visible = {
+		has_parliament = yes
+	}
+	
 	scripted_gui = parliament_decision_scripted_gui
 }

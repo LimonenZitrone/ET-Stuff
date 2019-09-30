@@ -1,3 +1,8 @@
+has_parliament = {
+	# triggers for getting a parliament
+	has_government = democratic
+}
+
 parliament_at_least_x_seats_has_specified_ideology = {
 	set_temp_variable = { num_of_seats_of_party = parliament_seats_party_array^num }
 	if = {

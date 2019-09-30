@@ -2,6 +2,9 @@ on_actions = {
 	on_startup = {
 		effect = {
 			every_country = {
+				limit = {
+					has_parliament = yes
+				}
 				clear_array = parliament_seats_yes_no_array
 				clear_array = parliament_seats_party_array
 				adjust_parliament_size = yes
