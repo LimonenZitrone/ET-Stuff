@@ -1,6 +1,6 @@
 has_parliament = {
 	# triggers for getting a parliament
-	has_government = democratic
+	has_elections = yes
 }
 
 parliament_at_least_x_seats_has_specified_ideology = {
