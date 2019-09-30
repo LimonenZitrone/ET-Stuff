@@ -1063,14 +1063,12 @@ test_category = {
 		}
 	}
 	
-	#MAKE THE THE ROOT_OUT_CORRUPTION A TIMED MISSION
 	root_out_corruption = {
 		visible = { always = yes }
 		icon = parla
 		
 		cost = 350
-		selectable_mission = yes
-		days_mission_timeout = 365
+		days_remove = 365
 		
 		available = {
 			has_completed_focus = Creation_Of_DDR
@@ -1078,11 +1076,7 @@ test_category = {
 			parliament_at_least_x_yes_votes_percentage = yes
 		}
 		
-		timeout_effect = {
-			
-		}
-		
-		complete_effect = {
+		remove_effect = {
 			# -1% popularity for all ideologies except for ruling party
 			if = {
 				limit = {
