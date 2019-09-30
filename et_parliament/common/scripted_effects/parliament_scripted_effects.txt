@@ -1,3 +1,300 @@
+adjust_parliament_size = {
+	set_temp_variable = { parliament_size_temp = 0 }
+	every_owned_state = {
+		limit = {
+			is_core_of = PREV
+		}
+		add_to_temp_variable = { parliament_size_temp = 1 }
+	}
+	if = {
+		limit = {
+			check_variable = { parliament_size_temp < 50 }
+		}
+		set_temp_variable = { parliament_size_temp = 50 }
+	}
+	resize_array = {
+		array = parliament_seats_yes_no_array
+		value = 2
+		size = parliament_size_temp
+	}
+	if = {
+		limit = {
+			has_government = democratic
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 1
+			size = parliament_size_temp
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = communism
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 2
+			size = parliament_size_temp
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = fascism
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 3
+			size = parliament_size_temp
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = neutrality
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 4
+			size = parliament_size_temp
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = islamic
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 5
+			size = parliament_size_temp
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = anarchism
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 6
+			size = parliament_size_temp
+		}
+	}
+	else = {
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 7
+			size = parliament_size_temp
+		}
+	}
+	sort_parliament_arrays = yes
+	set_parliament_percentages = yes
+}
+
+set_parliament_yes_no_votes_to_ruling_party_popularity = {
+	set_temp_variable = { parliament_size_temp = parliament_seats_yes_no_array^num }
+	set_temp_variable = { num_of_yes_votes_from_ruling_party = party_popularity@ruling_party }
+	multiply_temp_variable = { num_of_yes_votes_from_ruling_party = parliament_size_temp }
+	divide_temp_variable = { num_of_yes_votes_from_ruling_party = 100 }
+	# round temp var (effect doesn't seem to work)
+	add_to_temp_variable = { num_of_yes_votes_from_ruling_party = 0.5 }
+	divide_temp_variable = { num_of_yes_votes_from_ruling_party = 1000 }
+	multiply_temp_variable = { num_of_yes_votes_from_ruling_party = 1000 }
+	# populate array
+	clear_array = parliament_seats_yes_no_array
+	for_loop_effect = {
+		start = 0
+		end = num_of_yes_votes_from_ruling_party
+		add_to_array = { parliament_seats_yes_no_array = 1 }
+	}
+	resize_array = {
+		array = parliament_seats_yes_no_array
+		value = 2
+		size = parliament_size_temp
+	}
+	sort_parliament_yes_no_array = yes
+	set_parliament_yes_no_percentages = yes
+}
+
+set_parliament_party_values_to_current_popularity = {
+	set_temp_variable = { parliament_size_temp = parliament_seats_party_array^num }
+	log = "Parliament Size: [?parliament_size_temp]"
+	set_temp_variable = { num_of_seats_party_1_temp = party_popularity@democratic }
+	set_temp_variable = { num_of_seats_party_2_temp = party_popularity@communism }
+	set_temp_variable = { num_of_seats_party_3_temp = party_popularity@fascism }
+	set_temp_variable = { num_of_seats_party_4_temp = party_popularity@neutrality }
+	set_temp_variable = { num_of_seats_party_5_temp = party_popularity@islamic }
+	set_temp_variable = { num_of_seats_party_6_temp = party_popularity@anarchism }
+	set_temp_variable = { num_of_seats_party_7_temp = party_popularity@monarchist }
+	multiply_temp_variable = { num_of_seats_party_1_temp = parliament_size_temp }
+	multiply_temp_variable = { num_of_seats_party_2_temp = parliament_size_temp }
+	multiply_temp_variable = { num_of_seats_party_3_temp = parliament_size_temp }
+	multiply_temp_variable = { num_of_seats_party_4_temp = parliament_size_temp }
+	multiply_temp_variable = { num_of_seats_party_5_temp = parliament_size_temp }
+	multiply_temp_variable = { num_of_seats_party_6_temp = parliament_size_temp }
+	multiply_temp_variable = { num_of_seats_party_7_temp = parliament_size_temp }
+	# round temp vars (effect doesn't seem to work)
+	add_to_temp_variable = { num_of_seats_party_1_temp = 0.5 }
+	divide_temp_variable = { num_of_seats_party_1_temp = 1000 }
+	multiply_temp_variable = { num_of_seats_party_1_temp = 1000 }
+	add_to_temp_variable = { num_of_seats_party_2_temp = 0.5 }
+	divide_temp_variable = { num_of_seats_party_2_temp = 1000 }
+	multiply_temp_variable = { num_of_seats_party_2_temp = 1000 }
+	add_to_temp_variable = { num_of_seats_party_3_temp = 0.5 }
+	divide_temp_variable = { num_of_seats_party_3_temp = 1000 }
+	multiply_temp_variable = { num_of_seats_party_3_temp = 1000 }
+	add_to_temp_variable = { num_of_seats_party_4_temp = 0.5 }
+	divide_temp_variable = { num_of_seats_party_4_temp = 1000 }
+	multiply_temp_variable = { num_of_seats_party_4_temp = 1000 }
+	add_to_temp_variable = { num_of_seats_party_5_temp = 0.5 }
+	divide_temp_variable = { num_of_seats_party_5_temp = 1000 }
+	multiply_temp_variable = { num_of_seats_party_5_temp = 1000 }
+	add_to_temp_variable = { num_of_seats_party_6_temp = 0.5 }
+	divide_temp_variable = { num_of_seats_party_6_temp = 1000 }
+	multiply_temp_variable = { num_of_seats_party_6_temp = 1000 }
+	add_to_temp_variable = { num_of_seats_party_7_temp = 0.5 }
+	divide_temp_variable = { num_of_seats_party_7_temp = 1000 }
+	multiply_temp_variable = { num_of_seats_party_7_temp = 1000 }
+	# populate array
+	clear_array = parliament_seats_party_array
+	if = {
+		limit = {
+			check_variable = { num_of_seats_party_1_temp > 0 }
+		}
+		for_loop_effect = {
+			start = 0
+			end = num_of_seats_party_1_temp
+			add_to_array = { parliament_seats_party_array = 1 }
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { num_of_seats_party_2_temp > 0 }
+		}
+		for_loop_effect = {
+			start = 0
+			end = num_of_seats_party_2_temp
+			add_to_array = { parliament_seats_party_array = 2 }
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { num_of_seats_party_3_temp > 0 }
+		}
+		for_loop_effect = {
+			start = 0
+			end = num_of_seats_party_3_temp
+			add_to_array = { parliament_seats_party_array = 3 }
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { num_of_seats_party_4_temp > 0 }
+		}
+		for_loop_effect = {
+			start = 0
+			end = num_of_seats_party_4_temp
+			add_to_array = { parliament_seats_party_array = 4 }
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { num_of_seats_party_5_temp > 0 }
+		}
+		for_loop_effect = {
+			start = 0
+			end = num_of_seats_party_5_temp
+			add_to_array = { parliament_seats_party_array = 5 }
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { num_of_seats_party_6_temp > 0 }
+		}
+		for_loop_effect = {
+			start = 0
+			end = num_of_seats_party_6_temp
+			add_to_array = { parliament_seats_party_array = 6 }
+		}
+	}
+	if = {
+		limit = {
+			check_variable = { num_of_seats_party_7_temp > 0 }
+		}
+		for_loop_effect = {
+			start = 0
+			end = num_of_seats_party_7_temp
+			add_to_array = { parliament_seats_party_array = 7 }
+		}
+	}
+	if = {
+		limit = {
+			has_government = democratic
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 1
+			size = parliament_size_temp
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = communism
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 2
+			size = parliament_size_temp
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = fascism
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 3
+			size = parliament_size_temp
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = neutrality
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 4
+			size = parliament_size_temp
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = islamic
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 5
+			size = parliament_size_temp
+		}
+	}
+	else_if = {
+		limit = {
+			has_government = anarchism
+		}
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 6
+			size = parliament_size_temp
+		}
+	}
+	else = {
+		resize_array = {
+			array = parliament_seats_party_array
+			value = 7
+			size = parliament_size_temp
+		}
+	}
+	sort_parliament_party_array = yes
+	set_parliament_party_percentages = yes
+}
+
 resize_parliament_to_900_seats_if_it_has_more = {
 	if = {
 		limit = {
@@ -10,7 +307,9 @@ resize_parliament_to_900_seats_if_it_has_more = {
 			check_variable = { parliament_seats_party_array^num > 900 }
 		}
 		resize_array = { parliament_seats_party_array = 900 }
-	}	
+	}
+	sort_parliament_arrays = yes
+	set_parliament_percentages = yes
 }
 
 set_parliament_percentages = {
@@ -160,5 +459,53 @@ sort_parliament_party_array = {
 			subtract_from_temp_variable = { var = j value = 1 }
 			subtract_from_temp_variable = { var = j_minus value = 1 }
 		}
+	}
+}
+
+parliament_add_yes_votes = {
+	custom_effect_tooltip = PARLIAMENT_ADD_YES_VOTES_TT
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { num_of_yes_votes_to_add > 0 }
+			}
+			for_loop_effect = {
+				start = 0
+				end = num_of_yes_votes_to_add
+				if = {
+					limit = {
+						is_in_array = { parliament_seats_yes_no_array = 2 }
+					}
+					remove_from_array = { parliament_seats_yes_no_array = 2 }
+					add_to_array = { parliament_seats_yes_no_array = 1 }
+				}
+			}
+		}
+		sort_parliament_yes_no_array = yes
+		set_parliament_yes_no_percentages = yes
+	}
+}
+
+parliament_add_no_votes = {
+	custom_effect_tooltip = PARLIAMENT_ADD_NO_VOTES_TT
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { num_of_no_votes_to_add > 0 }
+			}
+			for_loop_effect = {
+				start = 0
+				end = num_of_no_votes_to_add
+				if = {
+					limit = {
+						is_in_array = { parliament_seats_yes_no_array = 1 }
+					}
+					remove_from_array = { parliament_seats_yes_no_array = 1 }
+					add_to_array = { parliament_seats_yes_no_array = 2 }
+				}
+			}
+		}
+		sort_parliament_yes_no_array = yes
+		set_parliament_yes_no_percentages = yes
 	}
 }

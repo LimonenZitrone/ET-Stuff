@@ -4,88 +4,10 @@ on_actions = {
 			every_country = {
 				clear_array = parliament_seats_yes_no_array
 				clear_array = parliament_seats_party_array
-				if = {
-					limit = {
-						check_variable = { owned_states^num > 24 }
-					}
-					set_temp_variable = { temp = owned_states^num }
-					multiply_temp_variable = { temp = 2 }
-					for_loop_effect = {
-						start = 0
-						end = temp
-						random_list = {
-							50 = {
-								add_to_array = { parliament_seats_yes_no_array = 1 }
-							}
-							50 = {
-								add_to_array = { parliament_seats_yes_no_array = 2 }
-							}
-						}
-						random_list = {
-							14 = {
-								add_to_array = { parliament_seats_party_array = 1 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 2 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 3 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 4 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 5 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 6 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 7 }
-							}
-						}
-					}
-				}
-				else = {
-					for_loop_effect = {
-						start = 0
-						end = 50
-						random_list = {
-							50 = {
-								add_to_array = { parliament_seats_yes_no_array = 1 }
-							}
-							50 = {
-								add_to_array = { parliament_seats_yes_no_array = 2 }
-							}
-						}
-						random_list = {
-							14 = {
-								add_to_array = { parliament_seats_party_array = 1 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 2 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 3 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 4 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 5 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 6 }
-							}
-							14 = {
-								add_to_array = { parliament_seats_party_array = 7 }
-							}
-						}
-					}
-				}
+				adjust_parliament_size = yes
+				set_parliament_yes_no_votes_to_ruling_party_popularity = yes
+				set_parliament_party_values_to_current_popularity = yes
 				resize_parliament_to_900_seats_if_it_has_more = yes
-				sort_parliament_arrays = yes
-				set_parliament_percentages = yes
 			}
 		}
 	}

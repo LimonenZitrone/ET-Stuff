@@ -1,0 +1,86 @@
+parliament_at_least_x_seats_has_specified_ideology = {
+	set_temp_variable = { num_of_seats_of_party = parliament_seats_party_array^num }
+	if = {
+		limit = {
+			check_variable = { parliament_seat_party = 1 }
+		}
+		multiply_temp_variable = { num_of_seats_of_party = parliament_seats_party_1_percentage }
+	}
+	else_if = {
+		limit = {
+			check_variable = { parliament_seat_party = 2 }
+		}
+		multiply_temp_variable = { num_of_seats_of_party = parliament_seats_party_2_percentage }
+	}
+	else_if = {
+		limit = {
+			check_variable = { parliament_seat_party = 3 }
+		}
+		multiply_temp_variable = { num_of_seats_of_party = parliament_seats_party_3_percentage }
+	}
+	else_if = {
+		limit = {
+			check_variable = { parliament_seat_party = 4 }
+		}
+		multiply_temp_variable = { num_of_seats_of_party = parliament_seats_party_4_percentage }
+	}
+	else_if = {
+		limit = {
+			check_variable = { parliament_seat_party = 5 }
+		}
+		multiply_temp_variable = { num_of_seats_of_party = parliament_seats_party_5_percentage }
+	}
+	else_if = {
+		limit = {
+			check_variable = { parliament_seat_party = 6 }
+		}
+		multiply_temp_variable = { num_of_seats_of_party = parliament_seats_party_6_percentage }
+	}
+	else_if = {
+		limit = {
+			check_variable = { parliament_seat_party = 7 }
+		}
+		multiply_temp_variable = { num_of_seats_of_party = parliament_seats_party_7_percentage }
+	}
+	divide_temp_variable = { num_of_seats_of_party = 100 }
+	custom_trigger_tooltip = {
+		tooltip = PARLIAMENT_AT_LEAST_X_SEATS_HAVE_SPECIFIED_IDEOLOGY
+		check_variable = { var = num_of_seats_of_party value = num_to_check_for compare = greater_than_or_equals }
+	}
+}
+
+parliament_at_least_x_yes_votes = {
+	set_temp_variable = { num_of_yes_votes = parliament_seats_yes_no_array^num }
+	multiply_temp_variable = { num_of_yes_votes = parliament_seats_yes_percentage }
+	divide_temp_variable = { num_of_yes_votes = 100 }
+	custom_trigger_tooltip = {
+		tooltip = PARLIAMENT_AT_LEAST_X_YES_VOTES
+		check_variable = { var = num_of_yes_votes value = num_to_check_for compare = greater_than_or_equals }
+	}
+}
+
+parliament_at_least_x_no_votes = {
+	set_temp_variable = { num_of_no_votes = parliament_seats_yes_no_array^num }
+	multiply_temp_variable = { num_of_no_votes = parliament_seats_no_percentage }
+	divide_temp_variable = { num_of_no_votes = 100 }
+	custom_trigger_tooltip = {
+		tooltip = PARLIAMENT_AT_LEAST_X_YES_VOTES
+		check_variable = { var = num_of_no_votes value = num_to_check_for compare = greater_than_or_equals }
+	}
+}
+
+parliament_at_least_x_yes_votes_percentage = {
+	set_temp_variable = { num_of_yes_votes_percentage = parliament_seats_yes_percentage }
+	custom_trigger_tooltip = {
+		tooltip = PARLIAMENT_AT_LEAST_X_YES_VOTES_PERCENTAGE
+		check_variable = { var = num_of_yes_votes_percentage value = percentage_to_check_for compare = greater_than_or_equals }
+	}
+}
+
+parliament_at_least_x_no_votes_percentage = {
+	set_temp_variable = { num_of_no_votes_percentage = parliament_seats_no_percentage }
+	custom_trigger_tooltip = {
+		tooltip = PARLIAMENT_AT_LEAST_X_NO_VOTES_PERCENTAGE
+		check_variable = { var = num_of_no_votes_percentage value = percentage_to_check_for compare = greater_than_or_equals }
+	}
+}

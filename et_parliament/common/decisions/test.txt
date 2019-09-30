@@ -1,5 +1,1446 @@
 test_category = {
-	test_decision = {
+	give_speech_to_parliament = {
 		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 90
+		cost = 25
+		
+		available = {
+			
+		}
+		
+		complete_effect = {
+			# set temp var to 5% of parliament size
+			set_temp_variable = { num_of_yes_votes_to_add = parliament_seats_yes_no_array^num }
+			multiply_temp_variable = { num_of_yes_votes_to_add = 0.05 }
+			# round temp var (effect doesn't seem to work)
+			add_to_temp_variable = { num_of_yes_votes_to_add = 0.5 }
+			divide_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			multiply_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			# add seats
+			parliament_add_yes_votes = yes
+			# code for a parliament event
+		}
+		
+		ai_will_do = {
+			factor = 51
+		}
+	}
+	
+	arguements_again_opposition = {
+		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 45
+		cost = 30
+		
+		available = {
+			
+		}
+		
+		complete_effect = {
+			# set temp var to 2% of parliament size
+			set_temp_variable = { num_of_yes_votes_to_add = parliament_seats_yes_no_array^num }
+			multiply_temp_variable = { num_of_yes_votes_to_add = 0.02 }
+			# round temp var (effect doesn't seem to work)
+			add_to_temp_variable = { num_of_yes_votes_to_add = 0.5 }
+			divide_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			multiply_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			# add seats
+			parliament_add_yes_votes = yes
+			# -1% popularity for all ideologies except for ruling party
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = communism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = fascism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = neutrality
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = islamic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = anarchism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = monarchist
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 59
+		}
+	}
+	
+	call_for_snap_elections = {
+		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 365
+		cost = 250
+		
+		available = {
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				democratic > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = communism
+				}
+				communism > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = fascism
+				}
+				fascism > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = neutrality
+				}
+				neutrality > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = islamic
+				}
+				islamic > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = anarchism
+				}
+				anarchism > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = monarchist
+				}
+				monarchist > 0.45
+			}
+		}
+		
+		complete_effect = {
+			# -1% popularity for all ideologies except for ruling party
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = communism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = fascism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = neutrality
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = islamic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = anarchism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = monarchist
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+			}
+			# have an election
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	
+	accuse_opposition_off_corruption = {
+		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 365
+		cost = 350
+		
+		available = {
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				democratic > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = communism
+				}
+				communism > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = fascism
+				}
+				fascism > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = neutrality
+				}
+				neutrality > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = islamic
+				}
+				islamic > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = anarchism
+				}
+				anarchism > 0.45
+			}
+			else_if = {
+				limit = {
+					has_government = monarchist
+				}
+				monarchist > 0.45
+			}
+		}
+		
+		complete_effect = {
+			# -1% popularity for all ideologies except for ruling party
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = communism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = fascism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = neutrality
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = islamic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = anarchism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = monarchist
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+			}
+			# have an election
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	buy_democratic_votes_votes = {
+		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 60
+		cost = 50
+		
+		available = {
+			set_temp_variable = { num_to_check_for = 1 }
+			set_temp_variable = { parliament_seat_party = 1 }
+			parliament_at_least_x_seats_has_specified_ideology = yes
+		}
+		
+		complete_effect = {
+			set_country_flag = buy_democratic_votes
+			# set temp var to num of seats of party
+			set_temp_variable = { num_of_yes_votes_to_add = 0 }
+			if = {
+				limit = {
+					set_temp_variable = { num_to_check_for = 1 }
+					set_temp_variable = { parliament_seat_party = 1 }
+					parliament_at_least_x_seats_has_specified_ideology = yes
+				}
+				set_temp_variable = { num_of_yes_votes_to_add = num_of_seats_of_party }
+				divide_temp_variable = { num_of_yes_votes_to_add = 2 }
+				# round temp var (effect doesn't seem to work)
+				add_to_temp_variable = { num_of_yes_votes_to_add = 0.5 }
+				divide_temp_variable = { num_of_yes_votes_to_add = 1000 }
+				multiply_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			}
+			# add seats
+			parliament_add_yes_votes = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	buy_fash_votes_votes = {
+		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 60
+		cost = 50
+		
+		available = {
+			set_temp_variable = { num_to_check_for = 1 }
+			set_temp_variable = { parliament_seat_party = 3 }
+			parliament_at_least_x_seats_has_specified_ideology = yes
+		}
+		
+		complete_effect = {
+			set_country_flag = buy_fash_votes
+			# set temp var to num of seats of party
+			set_temp_variable = { num_of_yes_votes_to_add = 0 }
+			if = {
+				limit = {
+					set_temp_variable = { num_to_check_for = 1 }
+					set_temp_variable = { parliament_seat_party = 3 }
+					parliament_at_least_x_seats_has_specified_ideology = yes
+				}
+				set_temp_variable = { num_of_yes_votes_to_add = num_of_seats_of_party }
+				divide_temp_variable = { num_of_yes_votes_to_add = 2 }
+				# round temp var (effect doesn't seem to work)
+				add_to_temp_variable = { num_of_yes_votes_to_add = 0.5 }
+				divide_temp_variable = { num_of_yes_votes_to_add = 1000 }
+				multiply_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			}
+			# add seats
+			parliament_add_yes_votes = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	buy_commie_votes_votes = {
+		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 60
+		cost = 50
+		
+		available = {
+			set_temp_variable = { num_to_check_for = 1 }
+			set_temp_variable = { parliament_seat_party = 2 }
+			parliament_at_least_x_seats_has_specified_ideology = yes
+		}
+		
+		complete_effect = {
+			set_country_flag = buy_commie_votes
+			# set temp var to num of seats of party
+			set_temp_variable = { num_of_yes_votes_to_add = 0 }
+			if = {
+				limit = {
+					set_temp_variable = { num_to_check_for = 1 }
+					set_temp_variable = { parliament_seat_party = 2 }
+					parliament_at_least_x_seats_has_specified_ideology = yes
+				}
+				set_temp_variable = { num_of_yes_votes_to_add = num_of_seats_of_party }
+				divide_temp_variable = { num_of_yes_votes_to_add = 2 }
+				# round temp var (effect doesn't seem to work)
+				add_to_temp_variable = { num_of_yes_votes_to_add = 0.5 }
+				divide_temp_variable = { num_of_yes_votes_to_add = 1000 }
+				multiply_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			}
+			# add seats
+			parliament_add_yes_votes = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	buy_monarchist_votes_votes = {
+		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 60
+		cost = 50
+		
+		available = {
+			set_temp_variable = { num_to_check_for = 1 }
+			set_temp_variable = { parliament_seat_party = 7 }
+			parliament_at_least_x_seats_has_specified_ideology = yes
+		}
+		
+		complete_effect = {
+			set_country_flag = buy_monarchist_votes
+			# set temp var to num of seats of party
+			set_temp_variable = { num_of_yes_votes_to_add = 0 }
+			if = {
+				limit = {
+					set_temp_variable = { num_to_check_for = 1 }
+					set_temp_variable = { parliament_seat_party = 7 }
+					parliament_at_least_x_seats_has_specified_ideology = yes
+				}
+				set_temp_variable = { num_of_yes_votes_to_add = num_of_seats_of_party }
+				divide_temp_variable = { num_of_yes_votes_to_add = 2 }
+				# round temp var (effect doesn't seem to work)
+				add_to_temp_variable = { num_of_yes_votes_to_add = 0.5 }
+				divide_temp_variable = { num_of_yes_votes_to_add = 1000 }
+				multiply_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			}
+			# add seats
+			parliament_add_yes_votes = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	buy_neutral_votes_votes = {
+		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 60
+		cost = 50
+		
+		available = {
+			set_temp_variable = { num_to_check_for = 1 }
+			set_temp_variable = { parliament_seat_party = 4 }
+			parliament_at_least_x_seats_has_specified_ideology = yes
+		}
+		
+		complete_effect = {
+			set_country_flag = buy_neutral_votes
+			# set temp var to num of seats of party
+			set_temp_variable = { num_of_yes_votes_to_add = 0 }
+			if = {
+				limit = {
+					set_temp_variable = { num_to_check_for = 1 }
+					set_temp_variable = { parliament_seat_party = 4 }
+					parliament_at_least_x_seats_has_specified_ideology = yes
+				}
+				set_temp_variable = { num_of_yes_votes_to_add = num_of_seats_of_party }
+				divide_temp_variable = { num_of_yes_votes_to_add = 2 }
+				# round temp var (effect doesn't seem to work)
+				add_to_temp_variable = { num_of_yes_votes_to_add = 0.5 }
+				divide_temp_variable = { num_of_yes_votes_to_add = 1000 }
+				multiply_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			}
+			# add seats
+			parliament_add_yes_votes = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	buy_islamic_votes_votes = {
+		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 60
+		cost = 50
+		
+		available = {
+			set_temp_variable = { num_to_check_for = 1 }
+			set_temp_variable = { parliament_seat_party = 5 }
+			parliament_at_least_x_seats_has_specified_ideology = yes
+		}
+		
+		complete_effect = {
+			set_country_flag = buy_islamic_votes
+			# set temp var to num of seats of party
+			set_temp_variable = { num_of_yes_votes_to_add = 0 }
+			if = {
+				limit = {
+					set_temp_variable = { num_to_check_for = 1 }
+					set_temp_variable = { parliament_seat_party = 5 }
+					parliament_at_least_x_seats_has_specified_ideology = yes
+				}
+				set_temp_variable = { num_of_yes_votes_to_add = num_of_seats_of_party }
+				divide_temp_variable = { num_of_yes_votes_to_add = 2 }
+				# round temp var (effect doesn't seem to work)
+				add_to_temp_variable = { num_of_yes_votes_to_add = 0.5 }
+				divide_temp_variable = { num_of_yes_votes_to_add = 1000 }
+				multiply_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			}
+			# add seats
+			parliament_add_yes_votes = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	buy_anarchist_votes_votes = {
+		visible = { always = yes }
+		icon = parla
+		
+		days_remove = 60
+		cost = 50
+		
+		available = {
+			set_temp_variable = { num_to_check_for = 1 }
+			set_temp_variable = { parliament_seat_party = 6 }
+			parliament_at_least_x_seats_has_specified_ideology = yes
+		}
+		
+		complete_effect = {
+			set_country_flag = buy_anarchist_votes
+			# set temp var to num of seats of party
+			set_temp_variable = { num_of_yes_votes_to_add = 0 }
+			if = {
+				limit = {
+					set_temp_variable = { num_to_check_for = 1 }
+					set_temp_variable = { parliament_seat_party = 6 }
+					parliament_at_least_x_seats_has_specified_ideology = yes
+				}
+				set_temp_variable = { num_of_yes_votes_to_add = num_of_seats_of_party }
+				divide_temp_variable = { num_of_yes_votes_to_add = 2 }
+				# round temp var (effect doesn't seem to work)
+				add_to_temp_variable = { num_of_yes_votes_to_add = 0.5 }
+				divide_temp_variable = { num_of_yes_votes_to_add = 1000 }
+				multiply_temp_variable = { num_of_yes_votes_to_add = 1000 }
+			}
+			# add seats
+			parliament_add_yes_votes = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	#MAKE THE THE ROOT_OUT_CORRUPTION A TIMED MISSION
+	root_out_corruption = {
+		visible = { always = yes }
+		icon = parla
+		
+		cost = 350
+		selectable_mission = yes
+		days_mission_timeout = 365
+		
+		available = {
+			has_completed_focus = Creation_Of_DDR
+			set_temp_variable = { percentage_to_check_for = 50 }
+			parliament_at_least_x_yes_votes_percentage = yes
+		}
+		
+		timeout_effect = {
+			
+		}
+		
+		complete_effect = {
+			# -1% popularity for all ideologies except for ruling party
+			if = {
+				limit = {
+					has_government = democratic
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = communism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = fascism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = neutrality
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = islamic
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = anarchism
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = monarchist
+					popularity = -0.01
+				}
+			}
+			else_if = {
+				limit = {
+					has_government = monarchist
+				}
+				add_popularity = {
+					ideology = democratic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = communism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = fascism
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = neutrality
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = islamic
+					popularity = -0.01
+				}
+				add_popularity = {
+					ideology = anarchism
+					popularity = -0.01
+				}
+			}
+			# reduce popularity because of corruption/false suspicion
+			if = {
+				limit = {
+					OR = {
+						has_country_flag = buy_democratic_votes
+						has_country_flag = buy_fash_votes
+						has_country_flag = buy_commie_votes
+						has_country_flag = buy_neutral_votes
+						has_country_flag = buy_islamic_votes
+						has_country_flag = buy_anarchist_votes
+						has_country_flag = buy_monarchist_votes
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = buy_democratic_votes
+					}
+					clr_country_flag = buy_democratic_votes
+					add_popularity = {
+						ideology = democratic
+						popularity = -0.05
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = buy_fash_votes
+					}
+					clr_country_flag = buy_fash_votes
+					add_popularity = {
+						ideology = fascism
+						popularity = -0.03
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = buy_commie_votes
+					}
+					clr_country_flag = buy_commie_votes
+					add_popularity = {
+						ideology = communism
+						popularity = -0.1
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = buy_neutral_votes
+					}
+					clr_country_flag = buy_neutral_votes
+					add_popularity = {
+						ideology = neutrality
+						popularity = -0.04
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = buy_islamic_votes
+					}
+					clr_country_flag = buy_islamic_votes
+					add_popularity = {
+						ideology = islamic
+						popularity = -0.03
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = buy_anarchist_votes
+					}
+					clr_country_flag = buy_anarchist_votes
+					add_popularity = {
+						ideology = anarchism
+						popularity = -0.1
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = buy_monarchist_votes
+					}
+					clr_country_flag = buy_monarchist_votes
+					add_popularity = {
+						ideology = monarchist
+						popularity = -0.07
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_government = democratic
+					}
+					add_popularity = {
+						ideology = democratic
+						popularity = -0.1
+					}
+				}
+				else_if = {
+					limit = {
+						has_government = communism
+					}
+					add_popularity = {
+						ideology = communism
+						popularity = -0.1
+					}
+				}
+				else_if = {
+					limit = {
+						has_government = fascism
+					}
+					add_popularity = {
+						ideology = fascism
+						popularity = -0.1
+					}
+				}
+				else_if = {
+					limit = {
+						has_government = neutrality
+					}
+					add_popularity = {
+						ideology = neutrality
+						popularity = -0.1
+					}
+				}
+				else_if = {
+					limit = {
+						has_government = islamic
+					}
+					add_popularity = {
+						ideology = islamic
+						popularity = -0.1
+					}
+				}
+				else_if = {
+					limit = {
+						has_government = anarchism
+					}
+					add_popularity = {
+						ideology = anarchism
+						popularity = -0.1
+					}
+				}
+				else_if = {
+					limit = {
+						has_government = monarchist
+					}
+					add_popularity = {
+						ideology = monarchist
+						popularity = -0.1
+					}
+				}
+			}
+			# have an election
+		}
+		
+		ai_will_do = {
+			factor = 20
+		}
 	}
 }

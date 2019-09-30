@@ -133,6 +133,7 @@ guiTypes = {
 			background = {
 				name = "background"
 				spriteType = "GFX_mini_tooltip"
+				alwaystransparent = yes
 			}
 			
 			instantTextBoxType = {

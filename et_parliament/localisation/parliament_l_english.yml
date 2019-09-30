@@ -17,3 +17,14 @@
  string_parliament_num_of_yes_votes: "§G[?parliament_num_of_yes_votes_temp]§!"
  string_parliament_num_of_no_votes: "§R[?parliament_num_of_no_votes_temp]§!"
  
+ # Scripted Effects:
+ PARLIAMENT_ADD_YES_VOTES_TT: "§G[?num_of_yes_votes_to_add]§! seats will switch to §YSupport§!, if possible.\n"
+ PARLIAMENT_ADD_NO_VOTES_TT: "§R[?num_of_no_votes_to_add]§! seats will switch to §YOpposition§!, if possible.\n"
+ 
+ # Scripted Triggers:
+ PARLIAMENT_AT_LEAST_X_SEATS_HAVE_SPECIFIED_IDEOLOGY: "At least §Y[?num_to_check_for]§! seats in the parliament belong to the §Y[This.GetParliamentSeatPartyOtherContext]§! ideology (currently §Y[?num_of_seats_of_party|0]§!)"
+ PARLIAMENT_AT_LEAST_X_YES_VOTES: "At least §Y[?num_to_check_for]§! seats in the parliament have the attitude §YSupport§! (currently §Y[?num_of_yes_votes|0]§!)"
+ PARLIAMENT_AT_LEAST_X_NO_VOTES: "At least §Y[?num_to_check_for]§! seats in the parliament have the attitude §YOpposition§! (currently §Y[?num_of_no_votes|0]§!)"
+ PARLIAMENT_AT_LEAST_X_YES_VOTES_PERCENTAGE: "At least §Y[?percentage_to_check_for|2]%§! of all parliament seats have the attitude §YSupport§! (currently §Y[?num_of_yes_votes_percentage|2]%§!)"
+ PARLIAMENT_AT_LEAST_X_NO_VOTES_PERCENTAGE: "At least §Y[?percentage_to_check_for|2]%§! of all parliament seats have the attitude §YOpposition§! (currently §Y[?num_of_no_votes_percentage|2]%§!)"
+ 
